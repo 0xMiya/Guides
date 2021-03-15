@@ -130,7 +130,8 @@ If you don't have an esp, you need to create it first. In this example using fdi
 	    /mnt/home   | /dev/<home> | Linux home (/home) | Remainder of the disk  
 	    
 You definitely need a root and an efi partition. Optional you can create a seperate home partititon and a swap partition.  
-You can also create a swap file later, instead of a swap partition	
+You can also create a swap file later, instead of a swap partition.	 
+**Also read my guide "swap.md" (Although the guide isn't complete yet :( )**
 
 ### Format partitions
 

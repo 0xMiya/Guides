@@ -57,11 +57,11 @@ Add the initrd ***above*** the second intird:
 
 	vim /boot/loader/entries/arch.conf
 	----------------------------------
-			title	Arch Linux
-			linux	/vmlinuz-linux
-			initrd	/amd-ucode.img # Place it above the other intird! (intel: intel-ucode.img)
-			initrd	/initramfs-linux.img
-			options	root=/dev/sda2 rw
+		title	Arch Linux
+		linux	/vmlinuz-linux
+		initrd	/amd-ucode.img # Place it above the other intird! (intel: intel-ucode.img)
+		initrd	/initramfs-linux.img
+		options	root=/dev/sda2 rw
 	----------------------------------
 
 ## Usage
