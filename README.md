@@ -23,4 +23,4 @@ This is just text.
 
 # Configs
 
-My dotfile and other config files can be found under Configs/
+My dotfiles and other config files can be found under Configs/
