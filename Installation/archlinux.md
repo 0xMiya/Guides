@@ -257,7 +257,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 	    --------------
 		    127.0.0.1       localhost
 		    ::1             localhost
-		    127.0.1.1       testikus.localdomain testikus
+		    127.0.1.1       <hostname>.localdomain <hostname>
 	    --------------
 
 * Usually not needed:
