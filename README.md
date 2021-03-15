@@ -2,6 +2,8 @@
 
 A few guides on how to install and setup Arch Linux and more.
 
+All guides can be found under Installation/
+
 ## Styleguide
 	
 This is just text.
@@ -18,3 +20,7 @@ This is just text.
 	    This is text you should write into the file
 	----------
 	
+
+# Configs
+
+My dotfile and other config files can be found under Configs/
