@@ -21,6 +21,7 @@ If you want to use wayland, there's dwl, which is basically just dwm for wayland
 	
 		tar -xvzf dwm-6.2.tar.gz # Unzip the tar archive
 		cd dwm-6.2
+		sudo make clean install
 	
 * [Optional] Create a desktop file
 
@@ -51,6 +52,8 @@ If you want to use wayland, there's dwl, which is basically just dwm for wayland
 		--------------
 		
 	Make sure to always keep "exec dwm" at the very last line of the file!
+
+	You can find an example xinitrc file under *Configs/.config/example_xinitrc*
 
 * Start dwm
 
@@ -122,4 +125,4 @@ If you want to use wayland, there's dwl, which is basically just dwm for wayland
 
 * My configs
 
-	I've uploaded my config files (see folder Configs)
+	I've uploaded my config files under *Configs/*

@@ -1,0 +1,58 @@
+#!/bin/sh
+
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+
+if [ -f $sysresources ]; then
+
+
+
+
+
+
+
+    xrdb -merge $sysresources
+
+fi
+
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+
+if [ -f "$userresources" ]; then
+
+
+
+
+
+
+
+    xrdb -merge "$userresources"
+
+fi
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+# start some nice programs
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
+picom -b # compositor for transparency
+nitrogen --restore # Set the background image
+numlockx & # Activate numlock (Install community/numlockx)
+xset s off
+xautolock -time 20 -locker "i3lock -i /home/vampire/Pictures/open-sourcerer-3440×1440.png -e -f" & # Start screen locker (Install community/xautolock)
+dunst & # start the notification daemon (Install communtiy/dunst)
+exec slstatus & # statusbar
+exec dwm
