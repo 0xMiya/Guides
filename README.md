@@ -2,7 +2,7 @@
 
 A few guides on how to install and setup Arch Linux and more.
 
-All guides can be found under Installation/
+All guides can be found under *Installation/*
 
 ## Styleguide
 	
@@ -23,4 +23,4 @@ This is just text.
 
 # Configs
 
-My dotfiles and other config files can be found under Configs/
+My dotfiles and other config files can be found under *Configs/*
