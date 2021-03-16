@@ -299,7 +299,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 ### Install a bootloader
 
 * systemd-boot  
-	***See the file "sytemd-boot.md"*** (It should be somewhere in this repo)
+	***See the file "systemd-boot.md"*** (It should be somewhere in this repo)
 	
 * Grub  
 	I haven't made a guide yet, but may create one soon.

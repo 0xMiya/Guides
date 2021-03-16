@@ -17,7 +17,7 @@ I have installed several patches:
 * dwm-alternativetags
 * dwm-6.2-urg-border
 
-All these patches can be found on the official suckless website, under dwm->patches
+All these patches can be found on the official suckless [website](https://dwm.suckless.org/patches/).
 
 You can install a patch using:
 
@@ -69,6 +69,8 @@ Since I use dvorak, I've changed my keybindings up a bit.
 	super + shift + escape 	-> quit the wm
 	super + shift + <n>		-> move focused window to nth tag
 
-## Fonts
+## slstatus
+
+Slstatus takes up a lot of cpu, on a weaker computer you may want to search for a resource friendlier alternative.
 
 Make sure to install "aur/nerd-fonts-complete" for slstatus to work.
