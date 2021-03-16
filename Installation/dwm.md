@@ -126,3 +126,19 @@ If you want to use wayland, there's dwl, which is basically just dwm for wayland
 * My configs
 
 	I've uploaded my config files under *Configs/*
+	
+### Tip
+
+Per default, if you hover with your mouse over a window, it immediately gets the focus. If you don't wont the focus to change on mouse-hover, there is a patch called "focusonclick".
+
+This patch however breaks a lot more then just mouse-hovering. Instead I recommend you just commenting out this line in dwm.c:
+
+	vim dwm.c
+	---------
+	Comment out the entire line:
+		[EnterNotify] = enternotify,
+	---------
+
+Since my version of dwm is heavily patched, I cannot give you the exact line number. In vim, just press "/" and then enter the text you want to search for. Press "n" to jump to the next search-result.
+
+Now the focus only changes if you click into a window.
