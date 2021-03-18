@@ -151,7 +151,7 @@ You can also create a swap file later, instead of a swap partition.
 
 * Mount /, /home, etc (See table above):
 
-	    mount /dev/(root) /mnt
+	    mount /dev/<root> /mnt
 
 * Create any remaining mount points (such as /mnt/efi) using mkdir
 and mount their corresponding volumes.

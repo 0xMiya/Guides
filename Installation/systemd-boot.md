@@ -70,7 +70,7 @@ Add the initrd ***above*** the second intird:
 
 * Up/Down - select entry
 * Enter - boot selected entry
-* d	- select the default entry to boot
+* d - select the default entry to boot
 * -/T - decrease the timeout
 * +/t - increase the timeout
 * e - edit the kernel command line. Has no options if the *editor* config option is set to *0*
