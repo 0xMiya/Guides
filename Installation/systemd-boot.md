@@ -2,71 +2,71 @@
 
 ## Installation
 
-* Mount the ESP to /mnt/boot  
+* Mount the ESP
 
     Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).
 
-	    mkdir /mnt/efi        # or /mnt/boot
-	    mount /<esp> /mnt/efi # or /mnt/boot
-	
+        mkdir /mnt/efi        # or /mnt/boot
+        mount /<esp> /mnt/efi # or /mnt/boot
+
 * chroot into the new system
-	
-		arch-chroot /mnt
-		
+
+        arch-chroot /mnt
+
 * Configure systemd-boot
 
-	For all configuration options see: "man 5 loader.conf"
+    For all configuration options see: "man 5 loader.conf"
 
-		bootctl --path=/efi install # or /boot
-		vim /efi/loader/loader.conf # or /boot/loader/loader.conf
-		----------------------------
-			timeout 30        # time until it boots the default entry
-			console-mode max  # Sets the resolution of the console to the highest availabel mode
-			default arch.conf # default entry to boot
-		----------------------------
-		
-		vim /efi/loader/entries/arch.conf  # or /boot/loader/entries/arch.conf
-		----------------------------------
-			title	Arch Linux
-			linux	/vmlinuz-linux
-			initrd	/initramfs-linux.img
-			options	root=/dev/sda2 rw
-		----------------------------------
-		
+        bootctl --path=/efi install # or /boot
+        vim /efi/loader/loader.conf # or /boot/loader/loader.conf
+        ----------------------------
+            timeout 30        # time until it boots the default entry
+            console-mode max  # Sets the resolution of the console to the highest availabel mode
+            default arch.conf # default entry to boot
+        ----------------------------
+        
+        vim /efi/loader/entries/arch.conf  # or /boot/loader/entries/arch.conf
+        ----------------------------------
+            title    Arch Linux
+            linux    /vmlinuz-linux
+            initrd    /initramfs-linux.img
+            options    root=/dev/sda2 rw
+        ----------------------------------
+
     Note: If you installed another kernel, your files may have other names. To get the correct name, run 'ls /efi' or 'ls /boot'.  
     For example if you installed the lts kernel, the names will be "vmlinuz-linux-lts" and "initramfs-linux-lts.img"
 
     In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
 
 * Get the UUID/PARTUUID
-	
-		blkid /dev/<root-partition> # Or use:
-		lsblk -af
-		
+
+        blkid /dev/<root-partition> # Or use:
+        lsblk -af
+
 * Using the UUID
 
-		options root=UUID=<uuid> rw
-		
+        options root=UUID=<uuid> rw
+
 * Using the PARTUUID
 
-		options root=PARTUUID=<partuuid> rw
+        options root=PARTUUID=<partuuid> rw
 
 ### Enable microcode updates
 
 If you have an amd or intel cpu, it is recommended to enable microcode updates
 
-	pacman -Suy amd-ucode # or intel-ucode
+    pacman -Suy amd-ucode # or intel-ucode
 
 Add the initrd ***above*** the second intird:
 
-	vim /efi/loader/entries/arch.conf # /boot/loader/entries/arch.conf
-	----------------------------------
-		title	Arch Linux
-		linux	/vmlinuz-linux
-		initrd	/amd-ucode.img # Place it above the other intird! (intel: intel-ucode.img)
-		initrd	/initramfs-linux.img
-		options	root=/dev/sda2 rw
-	----------------------------------
+    vim /efi/loader/entries/arch.conf # /boot/loader/entries/arch.conf
+    ----------------------------------
+        title    Arch Linux
+        linux    /vmlinuz-linux
+        initrd    /amd-ucode.img # Place it above the other intird! (intel: intel-ucode.img)
+        initrd    /initramfs-linux.img
+        options    root=/dev/sda2 rw
+    ----------------------------------
 
 ## Usage
 
@@ -95,10 +95,10 @@ Hotkeys:
 
 * Choose where to boot directly after a reboot
 
-		systemctl reboot --boot-loader-entry=<entry>
-		systemctl reboot --boot-loader-entry=help
-		
+        systemctl reboot --boot-loader-entry=<entry>
+        systemctl reboot --boot-loader-entry=help
+
 * Boot into the firmware of your motherboard
 
-		systemctl reboot --firmware-setup
-		
+        systemctl reboot --firmware-setup
+
