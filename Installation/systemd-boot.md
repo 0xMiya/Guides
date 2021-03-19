@@ -6,8 +6,9 @@
 
     Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).
 
-    You can also create a seperate boot partition and mount it to "/mnt/boot" and then the esp to "/mnt/efi". In that case install with "bootctl --esp-path=/mnt/efi --boot-path=/mnt/boot install"  
-    The partition where the bootloader is installed should always be shared across all installed OS.
+    You can also create a seperate boot partition and mount it to "/mnt/boot" and then the esp to "/mnt/efi". In that case install with "bootctl --esp-path=/mnt/efi --boot-path=/mnt/boot install"
+    
+    <span style="color:crimson">The partition where the bootloader is installed (esp) should always be shared across all installed OS.</span>
 
     I will from now on refer to the mountpoint of the esp as ***\<esp\>***.
 
@@ -34,16 +35,16 @@
         
         vim <esp>/loader/entries/arch.conf
         ----------------------------------
-            title    Arch Linux
-            linux    /vmlinuz-linux
-            initrd    /initramfs-linux.img
-            options    root=/dev/sda2 rw
+            title Arch Linux
+            linux /vmlinuz-linux
+            initrd /initramfs-linux.img
+            options root=/dev/sda2 rw
         ----------------------------------
 
     <span style="color:orange">Note:</span> If you installed another kernel, your files may have other names. To get the correct name, run 'ls /boot'.  
     For example if you installed the lts kernel, the names will be "vmlinuz-linux-lts" and "initramfs-linux-lts.img"
 
-    <span style="color:red">Also if you have *not* mounted the esp to /mnt/boot, you may need to copy (cp -a, or maybe somehow tell mkinitcpio where to put the files) the images from /boot to /efi/EFI/arch/. (Like I already said, I haven't quite figured this out yet. Just mount it to /mnt/boot and your good).</span>
+    <span style="color:crimson">Also if you have *not* mounted the esp to /mnt/boot, you may need to copy (cp -a, or maybe somehow tell mkinitcpio where to put the files) the images from /boot to /efi/EFI/arch/. (Like I already said, I haven't quite figured this out yet. Just mount it to /mnt/boot and your good).</span>
 
     In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
 

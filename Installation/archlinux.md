@@ -137,7 +137,7 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
 ### Mount partitions
 
-<span style="color:crimson">Important:</span> Mount the root partition ***first***. Create any mountpoints that do not exist yet (/mnt/home, /mnt/boot, ...).
+<span style="color:crimson">Important:</span> Mount the root partition ***first***. Create (mkdir) any mountpoints that do not exist yet (/mnt/home, /mnt/boot, ...).
 
 * Mount /, /home, etc (See table above):
 
