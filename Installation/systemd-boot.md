@@ -4,12 +4,17 @@
 
 * Mount the ESP
 
-    Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).  
+    Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).
+
     You can also create a seperate boot partition and mount it to "/mnt/boot" and then the esp to "/mnt/efi". In that case install with "bootctl --esp-path=/mnt/efi --boot-path=/mnt/boot install"  
     The partition where the bootloader is installed should always be shared across all installed OS.
 
-        mkdir /mnt/efi        # or /mnt/boot
-        mount /<esp> /mnt/efi # or /mnt/boot
+    I will from now on refer to the mountpoint of the esp as ***\<esp\>***.
+
+    <span style="color:orange">Note:</span> I recommend you mounting the esp to /mnt/boot. It works best and I couldn't manage to get it working when installing it to any other mount point. :(
+
+        mkdir /mnt/<esp>
+        mount <esp-partition> /mnt/<esp>
 
 * chroot into the new system
 
@@ -19,15 +24,15 @@
 
     For all configuration options see: "man 5 loader.conf"
 
-        bootctl --path=/efi install # or /boot
-        vim /efi/loader/loader.conf # or /boot/loader/loader.conf
+        bootctl --path=<esp> install
+        vim <esp>/loader/loader.conf
         ----------------------------
             timeout 30        # time until it boots the default entry
             console-mode max  # Sets the resolution of the console to the highest availabel mode
             default arch.conf # default entry to boot
         ----------------------------
         
-        vim /efi/loader/entries/arch.conf  # or /boot/loader/entries/arch.conf
+        vim <esp>/loader/entries/arch.conf
         ----------------------------------
             title    Arch Linux
             linux    /vmlinuz-linux
@@ -35,8 +40,10 @@
             options    root=/dev/sda2 rw
         ----------------------------------
 
-    Note: If you installed another kernel, your files may have other names. To get the correct name, run 'ls /boot'.  
+    <span style="color:orange">Note:</span> If you installed another kernel, your files may have other names. To get the correct name, run 'ls /boot'.  
     For example if you installed the lts kernel, the names will be "vmlinuz-linux-lts" and "initramfs-linux-lts.img"
+
+    <span style="color:red">Also if you have *not* mounted the esp to /mnt/boot, you may need to copy (cp -a, or maybe somehow tell mkinitcpio where to put the files) the images from /boot to /efi/EFI/arch/. (Like I already said, I haven't quite figured this out yet. Just mount it to /mnt/boot and your good).</span>
 
     In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
 
@@ -61,13 +68,13 @@ If you have an amd or intel cpu, it is recommended to enable microcode updates
 
 Add the initrd ***above*** the second intird:
 
-    vim /efi/loader/entries/arch.conf # /boot/loader/entries/arch.conf
+    vim <esp>/loader/entries/arch.conf
     ----------------------------------
-        title    Arch Linux
-        linux    /vmlinuz-linux
-        initrd    /amd-ucode.img # Place it above the other intird! (intel: intel-ucode.img)
-        initrd    /initramfs-linux.img
-        options    root=/dev/sda2 rw
+        title Arch Linux
+        linux /vmlinuz-linux
+        initrd /amd-ucode.img # Place it above the other intird! (intel: intel-ucode.img)
+        initrd /initramfs-linux.img
+        options root=/dev/sda2 rw
     ----------------------------------
 
 ## Usage

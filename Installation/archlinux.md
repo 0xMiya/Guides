@@ -51,7 +51,7 @@ You may have to disable Secure Boot
 
         ping archlinux.org -c 3
 
-Note: On the installation image, systemd-networkd, systemd-resolved and iwd
+<span style="color:orange">Note:</span> On the installation image, systemd-networkd, systemd-resolved and iwd
 are preconfigured and enabled by default. This will ***not*** be the case for
 the installed system.
 
@@ -70,11 +70,7 @@ the installed system.
 
 ### EFI System Partition (ESP) ***Already exists***
 
-If you already have an esp (for example if you're dual-booting) just mount it. If you need to create one, skip this step. (And also skip the formating!)  
-
-Important: You need to first mount the root partition, before you can mount the esp!
-
-Note: when dualbooting, check for an existing EFI-Partition
+If you already have an esp (for example if you're dual-booting) just mount it (Don't format it!). If you need to create one, skip this step.
 
     fdisk -l /dev/<disk>
 
@@ -86,21 +82,10 @@ If it does, it is definitely the ESP.
     mount /dev/<partition> /mnt # Mount the esp
     ls # Check if it contains a directory called "EFI"
 
-* Unmount all mounted partitions
+Then unmount it again!
 
-        findmnt # List all mounted partitions
-        umount /dev/<partition>
-
-* Mount ESP for use together with a boot loader:
-
-        mount <esp> /mnt/efi
-
-* Or mount ESP to be directly booted:
-
-        mount <esp> /mnt/boot
-
-    Note: If you use a bootloader, in most cases you should mount the esp to /mnt/efi. Read the [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).  
-    If you want to boot directly without having to use a bootloader, mount it to /mnt/boot.
+    findmnt # List all mounted partitions
+    umount /dev/<partition>
 
 ### Or ***Create*** the ESP
 
@@ -138,6 +123,8 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
 * Format ESP as Fat-32:
 
+    <span style="color:crimson">Only format the esp if you just created it! We don't wont to overwrite an already existing esp.</span>  
+        
         mkfs.fat -F32 /dev/<esp>
 
 * Format /, /home, etc as ext4:
@@ -150,27 +137,40 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
 ### Mount partitions
 
+<span style="color:crimson">Important:</span> Mount the root partition ***first***. Create any mountpoints that do not exist yet (/mnt/home, /mnt/boot, ...).
+
 * Mount /, /home, etc (See table above):
 
         mount /dev/<root> /mnt
 
-* Create any remaining mount points (such as /mnt/efi) using mkdir
-and mount their corresponding volumes.
+* Mount ESP for use together with a boot loader:
 
-* Enable swap:
+        mount <esp> /mnt/efi
+
+* Or mount ESP to be directly booted:
+
+        mount <esp> /mnt/boot
+
+    <span style="color:orange">Note:</span> If you use a bootloader, in most cases you should mount the esp to /mnt/efi. ([systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/)).  
+    If you want to boot directly without having to use a bootloader, mount it to /mnt/boot.  
+    If you want to use systemd-boot, I highly recommend you mounting it to /mnt/boot. Trust me: It's the easiest way.
+
+* Enable swap (If you created a swap partition):
 
         swapon /dev/<swap-partition>
 
 ## Installation
 
 * Edit /etc/pacman.d/mirrorlist  
-Note: The higher a mirror is placed in the list, the higher its priority.
+<span style="color:orange">Note:</span> The higher a mirror is placed in the list, the higher its priority.
 
 * Install essential packages
 
+    For example:
+
         pacstrap /mnt base base-devel linux linux-firmware linux-headers man-db man-pages vim git dhcpcd zsh
 
-Instead of the linux kernel you can also install linux-lts, linux-zen, ... there are a lot more (Check the [archwiki](https://wiki.archlinux.org/index.php/Kernel))
+Instead of the linux kernel you can also install linux-lts, linux-zen, ... there are a lot more (Check the [archwiki](https://wiki.archlinux.org/index.php/Kernel)).
 
 ## Configure the system
 
@@ -190,7 +190,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 
 * [Optional] Create a swapfile (instead of a swap partition)
 
-        fallocate -l 2GB /swapfile # You can also use dd (recommended by the wiki) instead
+        fallocate -l 2GB /swapfile # You can also use dd (recommended by the wiki) instead, but I don't trust myself with such a dangerous weapon xD
         chmod 600 /swapfile
         mkswap /swapfile
         swapon /swapfile
@@ -233,7 +233,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
             LC_TIME=de_CH.UTF-8
         --------------------
 
-    Note: check the manual on locale(7) to see what options you have:
+    <span style="color:orange">Note:</span> check the manual on locale(7) to see what options you have:
 
         man 7 locale
 
@@ -241,7 +241,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 
         vim /etc/vconsole.conf
         ----------------------
-            KEYMAP=dvorak # Replace dvorak with whatever fits your needs
+            KEYMAP=dvorak # Replace dvorak with your layout
         ----------------------
 
 * Network configuration
@@ -260,11 +260,11 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
             127.0.1.1       <hostname>.localdomain <hostname>
         --------------
 
-* Usually not needed:
+* If you didn't made any special configuration, skip this step:
 
         mkinitcpio -P
 
-* Change password:
+* Change password for the root user:
 
         passwd
 
@@ -309,7 +309,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 * Activate services needed for internet
 
         ip link # List interfaces
-        ip link set <interface> up # Activate an interface
+        ip link set <interface> up # Activate an interface (They should already be activated)
         systemctl enable systemd-resolved
         systemctl enable systemd-networkd
         systemctl enable dhcpcd
@@ -325,9 +325,9 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 If everything worked, you may now want to setup a wm/de.  
 For setting up xorg and dwm, see my other guide "dwm.md".
 
-* You may also want to install paru, a pacman-wrapper that is also aur-aware
+You may also want to install paru, a pacman-wrapper that is also aur-aware:
 
-        mkdir code && cd code # Or any other directory
-        git clone https://aur.archlinux.org/paru.git
-        cd paru
-        makepkg -si
+    mkdir code && cd code # Or any other directory
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si
