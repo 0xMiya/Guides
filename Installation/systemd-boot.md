@@ -13,12 +13,14 @@
 		
 * Configure systemd-boot
 
+	For all configuration options see: "man 5 loader.conf"
+
 		bootctl --path=/boot install
 		vim /boot/loader/loader.conf
 		----------------------------
-			timeout 30
-			console-mode max
-			default arch.conf
+			timeout 30        # time until it boots the default entry
+			console-mode max  # Sets the resolution of the console to the highest availabel mode
+			default arch.conf # default entry to boot
 		----------------------------
 		
 		vim /boot/loader/entries/arch.conf
