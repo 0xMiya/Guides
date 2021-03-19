@@ -2,7 +2,7 @@
 
 ## Download the iso
 
-Download the iso and check the md5sum  
+[Download](https://archlinux.org/download/) the iso and check the md5sum  
 Use Balena Etcher to create a bootable usb from the iso  
 Select in the uefi/bios the usb to boot from  
 You may have to disable Secure Boot
@@ -70,7 +70,9 @@ the installed system.
 
 ### EFI System Partition (ESP) ***Already exists***
 
-If you already have an esp (for example if you're dual-booting) just mount it. If you need to create one, skip this step. (And also skip the formating!)
+If you already have an esp (for example if you're dual-booting) just mount it. If you need to create one, skip this step. (And also skip the formating!)  
+
+Important: You need to first mount the root partition, before you can mount the esp!
 
 Note: when dualbooting, check for an existing EFI-Partition
 
@@ -128,9 +130,9 @@ If you don't have an esp, you need to create it first. In this example using fdi
         /mnt        | /dev/<root> | Linux root (/)     | around 50GiB
         /mnt/home   | /dev/<home> | Linux home (/home) | Remainder of the disk  
 
-You definitely need a root and an efi partition. Optional you can create a seperate home partititon and a swap partition.  
-You can also create a swap file later, instead of a swap partition.     
-**Also read my guide "swap.md" (Although the guide isn't complete yet :( )**
+    You definitely need a root and an efi partition. Optional you can create a seperate home partititon and a swap partition.  
+    You can also create a swap file later, instead of a swap partition.     
+    **Also read my guide "swap.md" (Although the guide isn't complete yet :( )**
 
 ### Format partitions
 

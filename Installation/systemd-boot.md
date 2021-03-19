@@ -4,7 +4,9 @@
 
 * Mount the ESP
 
-    Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).
+    Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).  
+    You can also create a seperate boot partition and mount it to "/mnt/boot" and then the esp to "/mnt/efi". In that case install with "bootctl --esp-path=/mnt/efi --boot-path=/mnt/boot install"  
+    The partition where the bootloader is installed should always be shared across all installed OS.
 
         mkdir /mnt/efi        # or /mnt/boot
         mount /<esp> /mnt/efi # or /mnt/boot
@@ -33,7 +35,7 @@
             options    root=/dev/sda2 rw
         ----------------------------------
 
-    Note: If you installed another kernel, your files may have other names. To get the correct name, run 'ls /efi' or 'ls /boot'.  
+    Note: If you installed another kernel, your files may have other names. To get the correct name, run 'ls /boot'.  
     For example if you installed the lts kernel, the names will be "vmlinuz-linux-lts" and "initramfs-linux-lts.img"
 
     In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
