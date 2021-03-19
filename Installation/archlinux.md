@@ -97,8 +97,7 @@ If it does, it is definitely the ESP.
 
         mount <esp> /mnt/boot
 
-    Note: If you use a bootloader, in most cases you should mount the esp to /mnt/efi.  
-    However, if you want to use systemd-boot, you need to mount it to /mnt/boot.  
+    Note: If you use a bootloader, in most cases you should mount the esp to /mnt/efi. Read the [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).  
     If you want to boot directly without having to use a bootloader, mount it to /mnt/boot.
 
 ### Or ***Create*** the ESP

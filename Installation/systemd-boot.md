@@ -4,8 +4,10 @@
 
 * Mount the ESP to /mnt/boot  
 
-		mkdir /mnt/boot
-		mount /<esp> /mnt/boot
+    Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).
+
+	    mkdir /mnt/efi        # or /mnt/boot
+	    mount /<esp> /mnt/efi # or /mnt/boot
 	
 * chroot into the new system
 	
@@ -15,15 +17,15 @@
 
 	For all configuration options see: "man 5 loader.conf"
 
-		bootctl --path=/boot install
-		vim /boot/loader/loader.conf
+		bootctl --path=/efi install # or /boot
+		vim /efi/loader/loader.conf # or /boot/loader/loader.conf
 		----------------------------
 			timeout 30        # time until it boots the default entry
 			console-mode max  # Sets the resolution of the console to the highest availabel mode
 			default arch.conf # default entry to boot
 		----------------------------
 		
-		vim /boot/loader/entries/arch.conf
+		vim /efi/loader/entries/arch.conf  # or /boot/loader/entries/arch.conf
 		----------------------------------
 			title	Arch Linux
 			linux	/vmlinuz-linux
@@ -31,10 +33,10 @@
 			options	root=/dev/sda2 rw
 		----------------------------------
 		
-Note: If you installed another kernel, your files may have other names. To get the correct name, run 'ls /boot'.  
-For example if you installed the lts kernel, the names will be "vmlinuz-linux-lts" and "initramfs-linux-lts.img"
+    Note: If you installed another kernel, your files may have other names. To get the correct name, run 'ls /efi' or 'ls /boot'.  
+    For example if you installed the lts kernel, the names will be "vmlinuz-linux-lts" and "initramfs-linux-lts.img"
 
-In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
+    In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
 
 * Get the UUID/PARTUUID
 	
@@ -57,7 +59,7 @@ If you have an amd or intel cpu, it is recommended to enable microcode updates
 
 Add the initrd ***above*** the second intird:
 
-	vim /boot/loader/entries/arch.conf
+	vim /efi/loader/entries/arch.conf # /boot/loader/entries/arch.conf
 	----------------------------------
 		title	Arch Linux
 		linux	/vmlinuz-linux
