@@ -126,11 +126,16 @@ alias vim="nvim"
 alias ls="lsd"
 alias lt="ls --tree"
 alias l="ls -lahF"
+alias d="devour"
 
 alias getpath="find -type f | fzf | sed 's/^..//' | tr -d '\n' | xclip -selection c"
 
 open() {
     xdg-open "$(find -type f | fzf)"
+}
+
+dopen() {
+    d xdg-open "$(find -type f | fzf)"
 }
 
 fcd() {
