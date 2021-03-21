@@ -2,6 +2,8 @@
 
 My patched dwm build can be found in my-dwm-build/
 
+Make sure to install "aur/nerd-fonts-complete" for the statusbar to work.
+
 ## Patches
 
 I have installed several patches:
@@ -74,5 +76,3 @@ Since I use dvorak, I've changed my keybindings up a bit.
 ## slstatus
 
 Slstatus takes up a lot of cpu, on a weaker computer you may want to search for a resource friendlier alternative.
-
-Make sure to install "aur/nerd-fonts-complete" for slstatus to work.
