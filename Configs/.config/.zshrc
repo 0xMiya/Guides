@@ -92,6 +92,8 @@ plugins=(
     bgnotify
     zsh-autosuggestions
     zsh-syntax-highlighting
+    colored-man-pages
+    autojump
 )
 
 source $ZSH/oh-my-zsh.sh
