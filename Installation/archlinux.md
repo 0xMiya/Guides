@@ -137,7 +137,7 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
 ### Mount partitions
 
-<span style="color:crimson">Important:</span> Mount the root partition ***first***. Create (mkdir	) any mountpoints that do not exist yet (/mnt/home, /mnt/boot, ...).
+<span style="color:crimson">Important:</span> Mount the root partition ***first***. Create (mkdir) any mountpoints that do not exist yet (/mnt/home, /mnt/boot, ...).
 
 * Mount /, /home, etc (See table above):
 
@@ -151,9 +151,9 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
         mount <esp> /mnt/boot
 
-    <span style="color:orange">Note:</span> If you use a bootloader, in most cases you should mount the esp to /mnt/efi. ([systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/)).  
+    <span style="color:orange">Note:</span> If you use a bootloader, in most cases you should mount the esp to /mnt/efi.  
     If you want to boot directly without having to use a bootloader, mount it to /mnt/boot.  
-    If you want to use systemd-boot, I highly recommend you mounting it to /mnt/boot. Trust me: It's the easiest way.
+    If you want to use systemd-boot, I highly recommend you mounting it to /mnt/boot. Trust me: It's the easiest way. ([systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/)).
 
 * Enable swap (If you created a swap partition):
 
