@@ -25,7 +25,7 @@ Really old gpu's aren't supported by the newest driver, but you can still find o
 			Operation=Upgrade
 			Operation=Remove
 			Type=Package
-			Target=nvidia-dkms
+			Target=nvidia-dkms # Replace with the correct driver name
 			Target=linux-zen # Replace with you kernel name
 			
 			[Action]

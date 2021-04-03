@@ -9,7 +9,7 @@
 * [Important!] Update the virus signature database  
 You need to do this before you activate the service, else you might run into trouble.
 
-		freshclam
+		freshclam # Might needs sudo
 
 * Enable and start the auto-updating service
 

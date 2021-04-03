@@ -1,6 +1,6 @@
 # DWM
 
-If you want to use wayland, there's dwl, which is basically just dwm for wayland.
+This guide is for dwm on xorg. If you want to use wayland, there's dwl, which is basically just dwm for wayland.
 
 # Installation
 
