@@ -46,6 +46,10 @@
 
     <span style="color:crimson">Also if you have *not* mounted the esp to /mnt/boot, you may need to copy (cp -a, or maybe somehow tell mkinitcpio where to put the files) the images from /boot to /efi/EFI/arch/. (Like I already said, I haven't quite figured this out yet. Just mount it to /mnt/boot and your good).</span>
 
+	<span style="color:orange">Note:</span> Ryzen cpus are known for their issues with cstates. To prevent crashes, I recommend you adding 'processor.max_cstate=5' to the end of the last line.
+	
+		options root=/dev/sda2 rw processor.max_cstate=5
+
     In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
 
 * Get the UUID/PARTUUID
