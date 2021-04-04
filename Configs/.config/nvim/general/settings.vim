@@ -25,17 +25,26 @@ set updatetime=300							" Faster completion
 set timeoutlen=100							" By default 1000 ms
 set clipboard=unnamedplus					" Copy paste between vim and everything else
 set colorcolumn=80 							" Display vertical line after 80 columns
-set nohlsearch                              " Do not continue highlightning after search
+"set nohlsearch                              " Do not continue highlightning after search
 set exrc 									" Type vim . in a directory and it will load the vimrc inside the same directory
-set hidden                                  " Keep files open in an extra buffer
+"set hidden                                  " Keep files open in an extra buffer
 set noerrorbells                            " Keep quiet!
 set incsearch                               " Highlight while searching
 set scrolloff=8                             " Start scrolling when 8 lines from the top/bottom away
-set sidescrolloff=8                         " Start scrolling horizontaly when 8 charachters from left/right away
+set sidescrolloff=8                         " Start scrolling horizontaly when 8 characters from left/right away
 set completeopt=menuone,noinsert,noselect   " Autocomplete options
 set signcolumn=yes                          " Add extra column for linting, etc...
+
+set noshowmode
 
 "set swapfile
 set undodir=~/.vim/undodir                  " Set the directory for backup files
 set undofile
-"set noshowmode
+
+" Display whitespace characters
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:< "⎆·
+"set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣ "⎆
+"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
+
+"set syntax=whitespace

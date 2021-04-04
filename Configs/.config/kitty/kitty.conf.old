@@ -15,31 +15,42 @@ selection_background #FFFACD
 #: dull and bright version. You can also set the remaining colors from
 #: the 256 color table as color16 to color255.
 
-# Matches the ghifarit53/tokyonight-vim theme
-foreground #a9b1d6
-#background #1a1b26
-cursor #a9b1d6
+color0 #282828  
+color8 #484848
 
-color0 #1a1b26
-color8 #4e5173
+#: black
 
-color1 #F7768E
-color9 #F7768E
+color1 #f43753
+color9 #f43753
 
-color2 #9ECE6A
-color10 #9ECE6A
+#: red
 
-color3 #E0AF68
-color11 #E0AF68
+color2  #c9d05c
+color10 #c9d05c
 
-color4 #7AA2F7
-color12 #7AA2F7
+#: green
 
-color5 #9a7ecc
-color13 #9a7ecc
+color3  #ffc24b
+color11 #ffc24b
 
-color6 #4abaaf
-color14 #4abaaf
+#: yellow
 
-color7 #acb0d0
-color15 #acb0d0
+color4  #b3deef
+color12 #b3deef
+
+#: blue
+
+color5  #d3b987
+color13 #d3b987
+
+#: magenta
+
+color6  #73cef4
+color14 #73cef4
+
+#: cyan
+
+color7  #eeeeee
+color15 #ffffff
+
+#: white

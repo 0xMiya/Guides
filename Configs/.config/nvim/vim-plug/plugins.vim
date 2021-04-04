@@ -13,8 +13,11 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 Plug 'mbbill/undotree'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'itchyny/lightline.vim'
 "Plug 'nvim-telescope/telescope.nvim'
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
