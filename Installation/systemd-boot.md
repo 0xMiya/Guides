@@ -7,7 +7,7 @@
     Mount the esp to either "/mnt/efi" or "/mnt/boot". For more information see: [systemd bootloader specification](https://systemd.io/BOOT_LOADER_SPECIFICATION/).
 
     You can also create a seperate boot partition and mount it to "/mnt/boot" and then the esp to "/mnt/efi". In that case install with "bootctl --esp-path=/mnt/efi --boot-path=/mnt/boot install"
-    
+
     <span style="color:crimson">The partition where the bootloader is installed (esp) should always be shared across all installed OS.</span>
 
     I will from now on refer to the mountpoint of the esp as ***\<esp\>***.
@@ -46,11 +46,17 @@
 
     <span style="color:crimson">Also if you have *not* mounted the esp to /mnt/boot, you may need to copy (cp -a, or maybe somehow tell mkinitcpio where to put the files) the images from /boot to /efi/EFI/arch/. (Like I already said, I haven't quite figured this out yet. Just mount it to /mnt/boot and your good).</span>
 
-	<span style="color:orange">Note:</span> Ryzen cpus are known for their issues with cstates. To prevent crashes, I recommend you adding 'processor.max_cstate=5' to the end of the last line.
+	<span style="color:cyan">Info:</span> Ryzen cpus are known for their issues with cstates. To prevent crashes, I recommend you adding 'processor.max_cstate=5' to the end of the last line.
 	
 		options root=/dev/sda2 rw processor.max_cstate=5
+		
+	A few helpful links:  
+	https://bbs.archlinux.org/viewtopic.php?id=245608  
+	https://gist.github.com/wmealing/2dd2b543c4d3cff6cab7  
+	https://wiki.gentoo.org/wiki/Ryzen#Random_reboots_with_mce_events  
+	https://community.amd.com/t5/general-discussions/ryzen-instability-mce-bea0000000000108-what-do-do-next/td-p/73269?start=75&tstart=0
 
-    In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
+* In the example above I specified the root partition using the name (/dev/sda2). You can use the UUID or PARTUUID instead:
 
 * Get the UUID/PARTUUID
 
