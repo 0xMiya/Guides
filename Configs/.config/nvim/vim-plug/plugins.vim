@@ -18,12 +18,18 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mbbill/undotree'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'itchyny/lightline.vim'
+Plug 'drewtempelmeyer/palenight.vim'
 "Plug 'nvim-telescope/telescope.nvim'
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
 "Plug 'nvim-lua/diagnostic-nvim'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'puremourning/vimspector'
+Plug 'neovim/nvim-lsp'
+Plug 'joshdick/onedark.vim'
+Plug 'sainnhe/sonokai'
+Plug 'ayu-theme/ayu-vim'
+Plug 'bluz71/vim-moonfly-colors'
 
 call plug#end() 
 

@@ -37,6 +37,7 @@ Since I use dvorak, I've changed my keybindings up a bit.
 	super + F11             -> increase volume (I couldn't find another way to get those keys working)
 	super + F12             -> decrease volume
 	super + F1              -> create a screenshot (using scrot)
+	super + F2              -> change keyboard-layout to ch (Swiss German)
 	super + F3              -> change keyboard-layout to dvorak
 	super + F4              -> change keyboard-layout to programmer dvorak
 	super + l               -> show/hide status-bar

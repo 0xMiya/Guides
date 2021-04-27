@@ -7,7 +7,7 @@ set t_Co=256                                " Support 256 colors
 set conceallevel=0                          " Show `` in markdown files
 set tabstop=4 softtabstop=4                 " Insert 4 spaces for a tab
 set shiftwidth=4
-set expandtab
+"set expandtab
 set smartindent                             " Makes indenting smart
 "set softtabstop=0 noexpandtab
 set background=dark                         " Make background dark
@@ -44,6 +44,8 @@ set undofile
 " Display whitespace characters
 "set listchars=eol:,tab:\ ,trail:~,extends:>,precedes:<,space:· "⎆·␣$
 set listchars=eol:,tab:\ ,trail:~,extends:>,precedes:< "⎆·␣$
-set list
+"set list
 
 "set syntax=whitespace
+
+set mouse=a									" The dark side of vim

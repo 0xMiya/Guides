@@ -1,8 +1,11 @@
 picom -b # compositor for transparency
 nitrogen --restore # Set the background image
-numlockx & # Activate numlock (Install community/numlockx)
+numlockx & # Activate numlock
 xset s off
-xautolock -time 20 -locker "i3lock -i /home/vampire/Pictures/open-sourcerer-3440×1440.png -e -f" & # Start screen locker (Install community/xautolock and communtiy/i3lock)
-dunst & # start the notification daemon (Install communtiy/dunst)
+xautolock -time 20 -locker "i3lock -i /home/kitty/Pictures/open-sourcerer-3440×1440.png -e -f" & # Start screen locker
+dunst & # start the notification daemon
 exec slstatus & # statusbar
+wmname LG3D
+stalonetray --dockapp-mode simple &
+setxkbmap -option caps:escape # Srly f*ck caps
 exec dwm
