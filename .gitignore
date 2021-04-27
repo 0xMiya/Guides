@@ -1,1 +1,2 @@
 *.*.backup
+.config/nvim/vim-plug/plugged/*
