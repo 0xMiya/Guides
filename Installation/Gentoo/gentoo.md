@@ -448,8 +448,7 @@ Systemd. Choose the one you prefer.
 		x -> extract
 		p -> preserve permissions
 		f -> extract a file
-		--xattrs-include='*.*' -> include preservation of the extended attributes in
-all namespaces stored in the archive
+		--xattrs-include='*.*' -> include preservation of the extended attributes in all namespaces stored in the archive
 		--numeric-owner -> ensure the user and group IDs remain the same
 
 ## Compile Options
