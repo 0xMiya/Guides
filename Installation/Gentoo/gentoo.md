@@ -415,29 +415,29 @@ Systemd. Choose the one you prefer.
 
 * Download the tarball
 
-Variant 1:
-
-	Go to: https://www.gentoo.org/downloads/
-
-	Right click the correct tarball and click "copy link".
-
-		wget <copied url>
-
-	For example:
-
-		wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210425T214502Z/stage3-amd64-20210425T214502Z.tar.xz
-
-Variant 2 (definitely the better option):
-
-	Use links:
-
-	links https://www.gentoo.org/downloads/mirrors/
-
-	Navigate to a mirror, select the link and press <Enter>  
-	Then move to
-		releases/amd64/autobuilds
-	Select a stage, for example current-stage3-amd64, enter the directory and
-	press "d" to download the file
+	Variant 1:
+	
+		Go to: https://www.gentoo.org/downloads/
+	
+		Right click the correct tarball and click "copy link".
+	
+			wget <copied url>
+	
+		For example:
+	
+			wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210425T214502Z/stage3-amd64-20210425T214502Z.tar.xz
+	
+	Variant 2 (definitely the better option):
+	
+		Use links:
+	
+		links https://www.gentoo.org/downloads/mirrors/
+	
+		Navigate to a mirror, select the link and press <Enter>  
+		Then move to
+			releases/amd64/autobuilds
+		Select a stage, for example current-stage3-amd64, enter the directory and
+		press "d" to download the file
 
 * Use the same process as at the beginning to verify the file
 
