@@ -403,7 +403,7 @@ For example:
 
 ### Stage tarball
 
-Multilbi -> 64 and 32 bit (recommended)
+Multilbi -> 64 and 32 bit (recommended)  
 No-multilib -> pure 64 bit
 
 There are two multilib stage 3 tarballs available, one with OpenRC and one with
@@ -413,9 +413,11 @@ Systemd. Choose the one you prefer.
 
 		cd /mnt/gentoo
 
-* [Download](https://www.gentoo.org/downloads/) the tarball
+* Download the tarball
 
 Variant 1:
+
+	Go to: https://www.gentoo.org/downloads/
 
 	Right click the correct tarball and click "copy link".
 
@@ -423,7 +425,7 @@ Variant 1:
 
 	For example:
 
-		https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210425T214502Z/stage3-amd64-20210425T214502Z.tar.xz
+		wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210425T214502Z/stage3-amd64-20210425T214502Z.tar.xz
 
 Variant 2 (definitely the better option):
 
@@ -443,12 +445,12 @@ Variant 2 (definitely the better option):
 
 		$ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
-	x -> extract
-	p -> preserve permissions
-	f -> extract a file
-	--xattrs-include='*.*' -> include preservation of the extended attributes in
+		x -> extract
+		p -> preserve permissions
+		f -> extract a file
+		--xattrs-include='*.*' -> include preservation of the extended attributes in
 all namespaces stored in the archive
-	--numeric-owner -> ensure the user and group IDs remain the same
+		--numeric-owner -> ensure the user and group IDs remain the same
 
 ## Compile Options
 
@@ -457,7 +459,7 @@ decide for yourself what you want to use**
 
 Portage (Gentoos package manager) reads settings from "/etc/portage/make.conf"
 
-	nano /etc/portage/make.conf
+	nano -w /etc/portage/make.conf
 
 An example config with a bit of explanation can be found:
 
