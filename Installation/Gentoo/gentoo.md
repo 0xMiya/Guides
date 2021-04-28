@@ -403,4 +403,99 @@ For example:
 
 ### Stage tarball
 
+Multilbi -> 64 and 32 bit (recommended)
+No-multilib -> pure 64 bit
 
+There are two multilib stage 3 tarballs available, one with OpenRC and one with
+Systemd. Choose the one you prefer.
+
+* Go to the root file system mount point
+
+		cd /mnt/gentoo
+
+* [Download](https://www.gentoo.org/downloads/) the tarball
+
+Variant 1:
+
+	Right click the correct tarball and click "copy link".
+
+		wget <copied url>
+
+	For example:
+
+		https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210425T214502Z/stage3-amd64-20210425T214502Z.tar.xz
+
+Variant 2 (definitely the better option):
+
+	Use links:
+
+	links https://www.gentoo.org/downloads/mirrors/
+
+	Navigate to a mirror, select the link and press <Enter>  
+	Then move to
+		releases/amd64/autobuilds
+	Select a stage, for example current-stage3-amd64, enter the directory and
+	press "d" to download the file
+
+* Use the same process as at the beginning to verify the file
+
+* Unpack the file
+
+		$ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+
+	x -> extract
+	p -> preserve permissions
+	f -> extract a file
+	--xattrs-include='*.*' -> include preservation of the extended attributes in
+all namespaces stored in the archive
+	--numeric-owner -> ensure the user and group IDs remain the same
+
+## Compile Options
+
+**Its important that you read the complete guides on the different FLAGS and
+decide for yourself what you want to use**
+
+Portage (Gentoos package manager) reads settings from "/etc/portage/make.conf"
+
+	nano /etc/portage/make.conf
+
+An example config with a bit of explanation can be found:
+
+	nano /etc/portage/make.conf.example
+
+### CFLAGS and CXXFLAGS
+
+Define the optimization flags for GCC C and C++ compilers.
+
+Read the [GNU Online Manual](https://gcc.gnu.org/onlinedocs/) or the gcc info
+page:
+
+	info gcc
+
+Find more info:
+
+https://wiki.gentoo.org/wiki/GCC_optimization
+
+and:
+
+https://wiki.gentoo.org/wiki/Safe_CFLAGS
+
+### MAKEOPTS
+
+Defines how many parallel compilations should occur when installing a package.
+
+A good choice is the number of CPUs in the system plus one.  
+This can use a lot of memory, you shoud have at least 2GiB of RAM for each job.
+
+For example:
+	
+	MAKEOPTS="-j6"
+
+NOTE: Get the number of cpu cores:
+
+	cat /proc/cpuinfo
+
+
+// TODO: USE and other FLAGS
+
+## Chrooting
