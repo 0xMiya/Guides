@@ -211,7 +211,7 @@ wpa_supplicant has to be used instead
 
 ### Block devices
 
-Block devices represent and abstract interface to the disk. User programs can use
+Block devices represent an abstract interface to the disk. User programs can use
 block devices to interact with the disk without worrying what type the disk is.
 The program can simply address the storage on the disk as a bunch of contagious,
 randomly-accessible 4096-byte (4KiB) blocks.
@@ -224,8 +224,8 @@ MMC, eMMC, SD | /dev/mmcblk0        | ?
 
 ### Partition tables
 
-MBR (DOS disklabel) -> legacy BIOS boot
-GPT -> UEFI
+MBR (DOS disklabel) -> legacy BIOS boot  
+GPT -> UEFI  
 
 #### GUID Partition Table (GPT)
 
@@ -237,7 +237,7 @@ GPT -> UEFI
 and partition tables and has a backup GPT at the end of the disk
 
 It is possible to use GPT on a BIOS-based computer, but dual-booting Windows
-want be possible then. (Windows will boot in UEFI mode if it detects a GPT partition
+won't be possible then. (Windows will boot in UEFI mode if it detects a GPT partition
 label)
 
 #### Master boot record (MBR) or DOS boot sector
@@ -296,7 +296,7 @@ etc.
 
 ### Swap Space
 
-Allows the kernel to move pages that aro not likely to be accessed soon to disk
+Allows the kernel to move pages that are not likely to be accessed soon to disk
 (page-out). Of course if the pages are needed, they will need to be put back in
 memory (page-in) which will take [considerably longer](https://computers-are-fast.github.io/)
 than reading from RAM.
@@ -306,11 +306,11 @@ case of hibernation, the *entire* contents of memory are stored in swap. If the
 system requires support for hibernation, at least as much swap space as memory
 has to be available.
 
-For systems with multiple hard disk, it is recommended to create a swap partition
-foreach disk.  
-Swap on an SSD will have better performance than on a HDD.  
-Also swap files can be used instead of swap partitions.  
-When using systemd, you can also use systemd to automatically handle swap.
+- For systems with multiple hard disk, it is recommended to create a swap partition
+- foreach disk.  
+- Swap on an SSD will have better performance than on a HDD.  
+- Also swap files can be used instead of swap partitions.  
+- When using systemd, you can also use systemd to automatically handle swap.
 
 ### EFI System Partition (ESP)
 
@@ -370,11 +370,11 @@ VFAT (FAT32) | Not fully supported by Linux (No permission settings). Mostly use
 
 		swapon /dev/<swap-partition>
 
-Deactivate a swap partition using "swapoff <partition>"
+Deactivate a swap partition using "swapoff \<partition\>"
 
 ## Mounting
 
-Foreach partition, create the necessary mount directorie and mount the partition
+Foreach partition, create the necessary mount directory and mount the partition
 
 	mkdir /mnt/<directory>
 	mount /dev/<partition> /mnt/<directory>
@@ -399,7 +399,7 @@ For example:
 
 	date <MMDDhhmmYYYY>
 
-		date 100313162016
+		date 012306112004
 
 ### Stage tarball
 
