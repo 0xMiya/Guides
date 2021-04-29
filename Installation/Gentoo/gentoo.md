@@ -396,9 +396,7 @@ For example:
 
 	mount /dev/sda2 /mnt/gentoo	# mount the root partition to /mnt/gentoo
 
-## Installing the Gentoo installation files
-
-### Date and Time
+## Date and Time
 
 * Verify the current date and time:
 
@@ -414,7 +412,17 @@ For example:
 
 		date 012306112004
 
-### Stage tarball
+## Stage 1
+
+// TODO
+
+## Stage 2
+
+// TODO
+
+## Stage 3
+
+### Stage 3 tarball
 
 Multilbi -> 64 and 32 bit (recommended)  
 No-multilib -> pure 64 bit
@@ -1107,7 +1115,7 @@ Working as the root user is dangerous and should be avoided.
 
 ### Groups
 
-The groups the user is member of define what activites the user an perform.
+The groups the user is member of define what activites the user can perform.
 
 Group | Description
 ----- | -----------
