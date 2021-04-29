@@ -1109,6 +1109,13 @@ https://wiki.gentoo.org/wiki/Efibootmgr
 	$ umount -R /mnt/gentoo
 	$ reboot
 
+Since we haven't configured a domain name, when login in, we might get something
+like "This is \<hostname\>.unknown_domain ...".
+
+To prevent this remove the ".\0" from /etc/issue:
+
+	$ nano -w /etc/issue
+
 ## User administration
 
 Working as the root user is dangerous and should be avoided.
