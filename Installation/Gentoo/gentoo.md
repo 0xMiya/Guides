@@ -593,9 +593,9 @@ This is done in three steps:
 2. Reloading some settings (/etc/profile) using source
 3. Changing the primary prompt (this is just as a reminder that we are now on the chrooted system)
 
-	$ chroot /mnt/gentoo /bin/bash
-	$ source /etc/profile
-	$ export PS1="(chroot) ${PS1}"
+		$ chroot /mnt/gentoo /bin/bash
+		$ source /etc/profile
+		$ export PS1="(chroot) ${PS1}"
 
 If the installation is interrupted anywhere after this point, it *should* be
 possible to resume the installation by just mounting the partitions again and
@@ -646,8 +646,8 @@ OpenRC, make sure the chosen profile does **not** contain "systemd".
 
 		(chroot) $ eselect profile set <profile-number>
 
-	No-multilib -> does not contain any 32bit application
-	Developer	-> only for Gentoo developers
+	No-multilib -> does not contain any 32bit application  
+	Developer	-> only for Gentoo developers  
 
 ### Update @world set
 
@@ -682,7 +682,7 @@ Example:
 	# The minus "-" removes support. In this example we only want support for KDE, so we can remove gnome "-gtk -gnome".
 	# Wild cards are possible too "-*" <-- the example used here is *not* recommended!
 
-### [Optional] ACCEPT_LICENES variable
+### ACCEPT_LICENES variable
 
 In order to install packages, you need to accept the licenses.
 
@@ -821,18 +821,20 @@ ignored.
 
 	Press Esc two times to go back
 
+
 * It is recommended to enable all Gentoo specific options
 * Choose either OpenRC or systemd
 * Make sure that every driver that is vital for booting (such as SCSI controller) is compiled in the kernel and not as a module
 * Select the exact processor type. Also enabel MCE features if available. (Needed to notify users of any hardware problems). In x86_64 these errors are not printed to dmesg, but to /dev/mcelog. In that case also install "app-admin/mcelog".
 * Select "Maintain a devtmpfs file system to mount at /dev" so that critical device files are already available early in the boot process.
 * Enable SCSI disk support
-* Under File systems select support for the filesystems you use. Don't compile the filesystem that is used for the root partiton as module, otherwise Gentoo will not be able to mount the partition.
+* Under File systems select support for the filesystems you use. Don't compile the filesystem that is used for the root partiton as modules, otherwise Gentoo will not be able to mount the partition.
 * Enable Network device support (Ethernet and Wireless Cards)
-* Enable SMP support
+* Enable SMP support (For multicore processors)
 * Enable USB support
 * Enable GPT support
 * Enable support for UEFI
+
 
 * Now exit the configuration and start the compilation process
 
@@ -840,7 +842,7 @@ ignored.
 
 	Enable parallel builds using make -j<number> (similar to the MAKEOPTS variable)
 
-* When the compilation finished, copy the kernel image to /boot/. This is handled by make install
+* When the compilation finished, copy the kernel image to /boot/. This is handled by make install:
 
 		(chroot) $ make install
 
@@ -890,7 +892,7 @@ Genkernel configures and builds the kernel automatically.
 		------------------
 		<boot partition (esp)>	/boot	vfat	defaults	0 2
 
-	This file needs to be configured again later on
+	This file needs to be configured again later on.
 
 * Compile
 
@@ -963,7 +965,7 @@ It is recommended to use the UUIDs.
 		(chroot) $ emerge --ask --noreplace net-misc/netifrc
 		(chroot) $ nano -w /etc/conf.d/net
 		----------------------------------
-			config_eth0="dhcp"	# Replace eth0 with the correct interface name. If the system has several network interfaces repeat this for config_eth1, ...
+			config_eth0="dhcp"	# Replace eth0 with the correct interface name (see output of 'ifconfig' or 'ip link'. If the system has several network interfaces repeat this for config_eth1, ...
 
 * Automatically start networking at boot
 
@@ -1069,7 +1071,7 @@ Is not a (secondary) bootloader, but a tool to interact with the UEFI firmware
 and boot directly, without the need of another bootloader like GRUB2.
 
 First, the correct kernel configurations need to be made. (If you didn't made this
-befor, you will need to compile the kernel again :-) (What a stupid guide which
+before, you will need to compile the kernel again :-) (What a stupid guide which
 doesn't tell you this before (I'm looking at you gentoo handbook))
 
 https://wiki.gentoo.org/wiki/EFI_Stub
@@ -1079,7 +1081,7 @@ https://wiki.gentoo.org/wiki/Efibootmgr
     - EFI runtime service support (CONFIG_EFI),
     - EFI stub support (CONFIG_EFI_STUB)
     - Built-in kernel command line (CONFIG_CMDLINE_BOOL)
-    - and add the root partition path (example: /dev/sda2) or its PARTUUID to (CONFIG_CMDLINE).
+    - and add the root partition path (example: /dev/sda2) or its PARTUUID (recommended) to (CONFIG_CMDLINE).
 
 	(chroot) $ emerge --ask sys-boot/efibootmgr
 	(chroot) $ mkdir -p /boot/efi/boot
@@ -1098,3 +1100,40 @@ https://wiki.gentoo.org/wiki/Efibootmgr
 	$ umount -l /mnt/gentoo/dev{/shm,/pts,}
 	$ umount -R /mnt/gentoo
 	$ reboot
+
+## User administration
+
+Working as the root user is dangerous and should be avoided.
+
+### Groups
+
+The groups the user is member of define what activites the user an perform.
+
+Group | Description
+----- | -----------
+audio | Be able to access audio devices.
+cdrom | Be able to directly access optical devices.
+portage | Be able to access portage restricted sources.
+usb   | Be able to access USB devices.
+video | Be able to access video capturing hardware and doing hardware acceleration.
+wheel | Be able to use 'su'.
+
+	$ useradd -mG users,wheel,audio,video,usb -s /bin/bash miya
+	$ passwd miya
+
+If a user ever needs to perform some task as root, they can use 'su -'. Another
+way is to install sudo or doas.
+
+## Disk cleanup
+
+Remove the stage-tarball
+
+	$ rm /stage3-*.tar.*
+
+## What now?
+
+Read: https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage
+
+An overview over all topics: https://wiki.gentoo.org/wiki/Main_Page#Documentation_topics
+
+Recommended: https://wiki.gentoo.org/wiki/Localization/Guide
