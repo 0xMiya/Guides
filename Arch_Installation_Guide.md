@@ -2,10 +2,14 @@
 
 ## Download the iso
 
-[Download](https://archlinux.org/download/) the iso and check the md5sum  
-Use Balena Etcher to create a bootable usb from the iso  
-Select in the uefi/bios the usb to boot from  
-You may have to disable Secure Boot
+* [Download](https://archlinux.org/download/) the iso and check the md5sum
+* Use Balena Etcher to create a bootable usb from the iso, alteratively with dd:
+	
+		mkfs.vfat /dev/<disk> -I
+		dd if=<path-to-iso> of=/dev/<disk> status=progress
+
+* Select in the uefi/bios the usb to boot from  
+* You may have to disable Secure Boot
 
 ## Preparation
 

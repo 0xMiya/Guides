@@ -21,12 +21,12 @@ Note: If downloading from a mirror:
 	
 Prepare	 a usb:
 
-	$ sudo fdisk -l		# find the correct device (/dev/sdx)
-	$ mkfs.vfat /dev/<device> -I
+	sudo fdisk -l		# find the correct device (/dev/sdx)
+	mkfs.vfat /dev/<device> -I
 
 Flash usb:
 
-	$ sudo dd if=/<iso-file> of=/dev/<device> status=progress
+	sudo dd if=/<iso-file> of=/dev/<device> status=progress
 
 Warning, there's a reason why dd is also called "Disk Destroyer"!
 
@@ -34,9 +34,9 @@ Warning, there's a reason why dd is also called "Disk Destroyer"!
 
 ### In a vm with qemu
 
-	$ paru -S qemu edk2-ovmf			# ovmf is needed for uefi
-	$ qemu-img create image.img 16G
-	$ qemu-system-x86_64 -bios /usr/share/ovmf/x64/OVMF.fd -hda image.img -cdrom <iso> -m 4G -boot order=dc -enable-kvm
+	paru -S qemu edk2-ovmf			# ovmf is needed for uefi
+	qemu-img create image.img 16G
+	qemu-system-x86_64 -bios /usr/share/ovmf/x64/OVMF.fd -hda image.img -cdrom <iso> -m 4G -boot order=dc -enable-kvm
 
 ### On real hardware
 
@@ -184,13 +184,13 @@ wpa_supplicant has to be used instead
 
 ##### Using wpa_cli
 
-	$ vim /etc/wpa_supplicant/wpa_supplicant.conf
+	vim /etc/wpa_supplicant/wpa_supplicant.conf
 	-------------------------------------------
 		ctrl_interface=/run/wpa_supplicant
 		update_config=1
 
-	$ wpa_supplicant -B -i <interface> -c /etc/wpa_supplicant/wpa_supplicant.conf
-	$ wpa_cli		# this opens an interactive prompt
+	wpa_supplicant -B -i <interface> -c /etc/wpa_supplicant/wpa_supplicant.conf
+	wpa_cli		# this opens an interactive prompt
 
 	> scan			# scan for wlans
 	> scan_results	# print found wlans
@@ -200,12 +200,12 @@ wpa_supplicant has to be used instead
 	> enable_network <number>
 	> save_config
 	> quit
-	$ dhcpcd wlan0
+	dhcpcd wlan0
 
 ##### Using wpa_passphrase
 
-	$ sudo -i	# this needs to run in a root shell (bc of process substitution)
-	$ wpa_supplicant -B -i <interface> -c <(wpa_passphrase <ssid> <passwd>)
+	sudo -i	# this needs to run in a root shell (bc of process substitution)
+	wpa_supplicant -B -i <interface> -c <(wpa_passphrase <ssid> <passwd>)
 
 ## Partitioning
 
@@ -547,7 +547,7 @@ Used by the package manager to download source code.
 
 Select a physically nearby mirror:
 
-	$ mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+	mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 
 This will open a TUI, use the arrow keys to navigate up/down and press \<spacebar\>
 to (de)select a mirror. Press \<Enter\> to exit.
@@ -556,8 +556,8 @@ to (de)select a mirror. Press \<Enter\> to exit.
 
 Contains the sync information to update the package repository.
 
-	$ mkdir -p /mnt/gentoo/etc/portage/repos.conf
-	$ cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+	mkdir -p /mnt/gentoo/etc/portage/repos.conf
+	cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 
 ### DNS Information
 
@@ -579,19 +579,19 @@ the environment
 (/mnt/gentoo/sys/ will actually be /sys/, it is just a second entry point to the
 same filesystem, whereas /mnt/gentoo/proc/ is a new mount/instance of the filesystem).
 
-	$ mount --types proc /proc /mnt/gentoo/proc
-	$ mount --rbind /sys /mnt/gentoo/sys
-	$ mount --make-rslave /mnt/gentoo/sys		# needed for systemd
-	$ mount --rbind /dev /mnt/gentoo/dev
-	$ mount --make-rslave /mnt/gentoo/dev		# needed for systemd
+	mount --types proc /proc /mnt/gentoo/proc
+	mount --rbind /sys /mnt/gentoo/sys
+	mount --make-rslave /mnt/gentoo/sys		# needed for systemd
+	mount --rbind /dev /mnt/gentoo/dev
+	mount --make-rslave /mnt/gentoo/dev		# needed for systemd
 
 When installing Gentoo from a non-gentoo installation media, some distros make
 /dev/shm a symbolic link to /run/shm/ which, after the chroot becomes invalid.  
 Properly mount tmpfs:
 
-	$ test -L /dev/shm && rm /dev/shm && mkdir /dev/shm
-	$ mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
-	$ chmod 1777 /dev/shm
+	test -L /dev/shm && rm /dev/shm && mkdir /dev/shm
+	mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
+	chmod 1777 /dev/shm
 
 ### Change Root
 
@@ -627,16 +627,16 @@ re-run the steps above starting with copying the dns info.
 
 ### Reading news items
 
-	$ man news.eselect
+	man news.eselect
 
 Portage may output a message that "news items need reading..."
 
 News items provide a communication medium to push critical messages to users.  
 Use "eselect news" to manage them:
 
-	$ eselect news list		# Print an overview of available news
-	$ eselect news read		# Read the news items
-	$ eselect news purge	# Remove news items
+	eselect news list		# Print an overview of available news
+	eselect news read		# Read the news items
+	eselect news purge	# Remove news items
 
 ### Choosing a profile
 
@@ -1104,17 +1104,17 @@ https://wiki.gentoo.org/wiki/Efibootmgr
 ## Rebooting the system
 
 	(chroot) $ exit
-	$ cd
-	$ umount -l /mnt/gentoo/dev{/shm,/pts,}
-	$ umount -R /mnt/gentoo
-	$ reboot
+	cd
+	umount -l /mnt/gentoo/dev{/shm,/pts,}
+	umount -R /mnt/gentoo
+	reboot
 
 Since we haven't configured a domain name, when login in, we might get something
 like "This is \<hostname\>.unknown_domain ...".
 
 To prevent this remove the ".\0" from /etc/issue:
 
-	$ nano -w /etc/issue
+	nano -w /etc/issue
 
 ## User administration
 
@@ -1133,8 +1133,8 @@ usb   | Be able to access USB devices.
 video | Be able to access video capturing hardware and doing hardware acceleration.
 wheel | Be able to use 'su'.
 
-	$ useradd -mG users,wheel,audio,video,usb -s /bin/bash miya
-	$ passwd miya
+	useradd -mG users,wheel,audio,video,usb -s /bin/bash miya
+	passwd miya
 
 If a user ever needs to perform some task as root, they can use 'su -'. Another
 way is to install sudo or doas.
@@ -1143,7 +1143,7 @@ way is to install sudo or doas.
 
 Remove the stage-tarball
 
-	$ rm /stage3-*.tar.*
+	rm /stage3-*.tar.*
 
 ## What now?
 
