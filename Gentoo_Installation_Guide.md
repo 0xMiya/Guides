@@ -17,7 +17,7 @@ Note: If downloading from a mirror:
 
 // TODO
 	
-### Create a bootable usb stick, in this example using "dd":
+### Create a bootable usb stick, in this example using 'dd':
 	
 Prepare	 a usb:
 
@@ -36,7 +36,7 @@ Warning, there's a reason why dd is also called "Disk Destroyer"!
 
 	$ paru -S qemu edk2-ovmf			# ovmf is needed for uefi
 	$ qemu-img create image.img 16G
-	$ qemu-system-x86_64 -bios /usr/share/ovmf/x64/OVMF.fd -hda image.img -cdrom <iso> -m 4G -boot order=dc 
+	$ qemu-system-x86_64 -bios /usr/share/ovmf/x64/OVMF.fd -hda image.img -cdrom <iso> -m 4G -boot order=dc -enable-kvm
 
 ### On real hardware
 
@@ -1152,3 +1152,10 @@ Read: https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage
 An overview over all topics: https://wiki.gentoo.org/wiki/Main_Page#Documentation_topics
 
 Recommended: https://wiki.gentoo.org/wiki/Localization/Guide
+
+## Important
+
+Automatically generate cpu flags: [cpuid2cpuflags](Resources/Gentoo/cpuid2cpuflags.md)  
+Install [doas](Resources/Gentoo/doas.md)  
+Make compile time faster using [ccache](Resources/Gentoo/ccache.md)  
+Setup [x-server](Resources/Gentoo/xorg.md)  

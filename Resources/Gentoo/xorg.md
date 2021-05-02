@@ -189,6 +189,14 @@ X11 server options can be passed after a '--':
 
 	$ startx -- <options>
 
+### .xinitrc
+
+	$ vim ~/.xinitrc
+	----------------
+	
+		# Add additional configuration *above* this line
+		exec dwm	# or any other wm
+
 ## Keymap
 
 Set the keymap temporarily using 'setxkbmap':

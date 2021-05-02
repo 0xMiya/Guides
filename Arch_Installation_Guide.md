@@ -117,7 +117,7 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
     You definitely need a root and an efi partition. Optional you can create a seperate home partititon and a swap partition.  
     You can also create a swap file later, instead of a swap partition.     
-    **Also read my guide "swap.md" (Although the guide isn't complete yet :( )**
+    Also read my [swap guide](Resources/Arch_Linux/swap.md) (Although the guide isn't complete yet :( )
 
 ### Format partitions
 
@@ -299,10 +299,10 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 ### Install a bootloader
 
 * systemd-boot  
-    ***See the file "systemd-boot.md"*** (It should be somewhere in this repo)
+	Read the [systemd-boot guide](Resources/Arch_Linux/systemd-boot.md)
 
 * Grub  
-    I haven't made a guide yet, but may create one soon.
+    I haven't made a guide yet, but may create one ~~soon~~.
 
 ### Finish
 
@@ -323,7 +323,7 @@ Instead of the linux kernel you can also install linux-lts, linux-zen, ... there
 ## After the installation
 
 If everything worked, you may now want to setup a wm/de.  
-For setting up xorg and dwm, see my other guide "dwm.md".
+For setting up xorg and dwm, see my other [guide](Resources/Arch_Linux/dwm.md).
 
 You may also want to install paru, a pacman-wrapper that is also aur-aware:
 
