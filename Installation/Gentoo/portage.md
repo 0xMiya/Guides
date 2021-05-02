@@ -15,7 +15,7 @@ A collection of ebuilds.
 Files that contain all information Portage needs to maintain software (install,
 search, query, etc.)
 
-Stored in /var/db/repos/gentoo.
+Stored in ***/var/db/repos/gentoo***.
 
 It is important to regularly update the ebuilds on the system so Portage knows
 about new software, security updates, etc.
@@ -82,8 +82,8 @@ Check if the 'doc' USE flag is used by a package:
 	$ emerge -vp media-libs/alsa-lib
 
 If you want the documentation to be installed, add it to the USE flag, either in
-/etc/portage/make.conf or on a per-package basis in /etc/portage/package.use. (So
-that only documentation for wanted packages is installed).
+***/etc/portage/make.conf*** or on a per-package basis in ***/etc/portage/package.use***.
+(So that only documentation for wanted packages is installed).
 
 Once a package is installed, its documentation is usually found in a subdirectory
 named after the package in ***/usr/share/doc***.
@@ -113,7 +113,7 @@ First sync the repository (--sync), then update the system:
 
 Portage will then search for newer version of the applications that are installed,
 but it will only do this for explicitly installed packages (the ones listed in
-/var/lib/portage/world) - it does **not** check their dependencies.
+***/var/lib/portage/world***) - it does **not** check their dependencies.
 
 To update the dependencies as well, use the '--deep' option:
 
@@ -129,6 +129,9 @@ will then verify if the changes require the installation of new packages or
 recompilation of existing ones:
 
 	$ emerge --update --deep --with-bdeps=y --newuse --ask @world
+
+If you get a message saying that config files need to be updated use 'etc-update'
+and select the option '1' (replace the old file).
 
 ### Metapackages
 

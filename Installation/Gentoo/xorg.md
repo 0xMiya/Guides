@@ -124,6 +124,13 @@ If the suggested settings does not work emerge "x11-base/xorg-drivers"
 
 ## Install Xorg
 
+First install the rust binary (you really don't want to have to compile that,
+except you really hate your cpu).
+
+	$ emerge --ask dev-lang/rust-bin
+
+After thats done, install xorg-server.
+
 If you get a message "unmet requirements" you might need to add "elogind" to the
 USE flags.
 
@@ -131,8 +138,98 @@ USE flags.
 
 	# Update environment variables
 	$ env-update
-	$ soure /etc/profile
+	$ source /etc/profile
+
+## Xorg as non-root user (OpenRC specific)
+
+Enable the 'elogind' USE flag if you haven't done it already, then update the
+system with 'emerge -ND @world'. After that, re-login.
+
+elogind needs to be started at the boot runlevel:
+
+	$ rc-update add elogind boot
+
+After a graphical login, X Server should not be running under a root user:
+
+	$ ps -fC X
 
 ## Configuration
 
+X-Server is designed to work out-of-the-box, usually you shouldn't have to do any
+manual configuration.
 
+Most configuration files are stored in the ***/etc/X11/xorg.conf.d/*** directory.  
+Each file in given a unique name and ends with *.conf*. The file names will be
+read in alphanumeric order.
+
+Example configurations can be found in ***/usr/share/doc/xorg-server-<version>/xorg.conf.example.bz2***.
+More information can be found in 'man xorg.conf'.
+
+## startx
+
+'startx' (x11-apps/xinit) can be used to start the x-server.
+
+* If a file named ***.xinitrc*** exists in the home directory, it will execute
+the commands listed there.
+
+* Otherwise it will read the value of the 'XSESSION' variable from ***/etc/env.d/90xsession***
+file. To set a system wide default session run:
+
+		$ echo XSESSION="Xfce4" > /etc/env.d/90xsession		# this will set the default X session to Xfce
+		$ env-update	# Always update the environment after making changes
+
+The session can also be given as an argument to startx:
+	
+	$ startx <full-path-to-binary>
+	$ startx /usr/local/bin/dwm		# You need to provide the full path, even if its on your $PATH variable
+
+For dwm, you also need to install 'x11-libs/libXinerama'.
+
+X11 server options can be passed after a '--':
+
+	$ startx -- <options>
+
+## Keymap
+
+Set the keymap temporarily using 'setxkbmap':
+
+	$ setxkbmap dvorak
+
+To make it permanent, add this to your .xinitrc.
+
+Set it system wide and permanent:
+
+	$ vim /etc/X11/xorg.conf.d/10-keyboard.conf
+	-------------------------------------------
+		Section "InputClass"
+		    Identifier "keyboard-all"
+		    Driver "evdev"
+		    Option "XkbLayout" "us,br"
+		    Option "XkbVariant" ",abnt2"
+		    Option "XkbOptions" "grp:shift_toggle,grp_led:scroll"
+		    MatchIsKeyboard "on"
+		EndSection
+
+## Screen resolution
+
+Get the screen info using 'xrandr' (install with 'emerge xrandr')
+
+Create the config file:
+
+	$ vim /etc/X11/xorg.conf.d/40-monitor.conf
+	------------------------------------------
+		Section "Device"
+		  Identifier "RadeonHD 4550"
+		  Option     "Monitor-DVI-0" "DVI screen"
+		  Option     "Monitor-VGA-0" "VGA screen"
+		EndSection
+		Section "Monitor"
+		  Identifier "DVI screen"
+		EndSection
+		Section "Monitor"
+		  Identifier "VGA screen"
+		  Option     "RightOf" "DVI screen"
+		EndSection
+
+When using multiple monitors use "RightOf", "Above", etc to configure the
+position of the monitor.
