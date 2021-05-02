@@ -1,14 +1,16 @@
 # Guides
 
-A few guides on how to install and setup Arch Linux and more.
+The Arch Linux installation guide can be found [here](Arch_Installation_Guide.md).  
+Additional (and maybe useful) resources for Arch Linux are located [here](Resources/Arch_Linux/).  
 
-All guides can be found under *Installation/*
+The Gentoo Linux installation guide can be found [here](Gentoo_Installation_Guide.md).  
+Additional (and maybe useful) resources for Gentoo Linux are located [here](Resources/Gentoo/).  
 
 ## Styleguide
 	
 This is just text.
 
-	This is a Command
+	$ This is a Command
 	
 	<This is a Placeholder>
 	
