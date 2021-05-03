@@ -21,8 +21,8 @@ Note: If downloading from a mirror:
 	
 Prepare	 a usb:
 
-	sudo fdisk -l		# find the correct device (/dev/sdx)
-	mkfs.vfat /dev/<device> -I
+	sudo fdisk -l		# find the correct disk (/dev/sdx)
+	mkfs.vfat /dev/<disk> -I
 
 Flash usb:
 
@@ -54,7 +54,7 @@ boot from.
 	To use the default just press \<Enter\> to select a kernel and boot options
 	write "\<kernel\> \<options\>".
 
-	Check the [gentoo installation guide](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Booting) for 		a detailed list of options.
+	Check the [gentoo installation handbook](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Booting) for 		a detailed list of options.
 
 * Select keyboard layout
 
@@ -64,6 +64,8 @@ boot from.
 
 ### View the gentoo handbook during installation
 
+[Option 1]
+
 * First create another user account
 
 		useradd -mG users wiki	# create a user named wiki
@@ -71,7 +73,11 @@ boot from.
 	
 	Change tty by pressing \<Alt+F2\>. (Press \<Alt+F1\> to go back)
 
+[Option 2]
+
 * Alternatively use screen (already preinstalled) instead
+
+[Option 1+2]
 
 * Open the wiki:
 
@@ -260,19 +266,19 @@ gentoo installation wiki.
 
 ### Advanced Storage (LVM)
 
-// TODO
+// TODO  
 https://wiki.gentoo.org/wiki/LVM
 
 ### RAID
 
-// TODO
-https://raid.wiki.kernel.org/index.php/Linux_Raid
+// TODO  
+https://raid.wiki.kernel.org/index.php/Linux_Raid  
 https://raid.wiki.kernel.org/index.php/What_is_RAID_and_why_should_you_want_it%3F
 
 ### Btrfs
 
-// TODO
-https://wiki.gentoo.org/wiki/Btrfs
+// TODO  
+https://wiki.gentoo.org/wiki/Btrfs  
 https://btrfs.wiki.kernel.org/index.php/Status
 
 ### Partition Scheme
@@ -319,11 +325,10 @@ case of hibernation, the *entire* contents of memory are stored in swap. If the
 system requires support for hibernation, at least as much swap space as memory
 has to be available.
 
-- For systems with multiple hard disk, it is recommended to create a swap partition
-- foreach disk.  
+- For systems with multiple hard disk, it is recommended to create a swap partition foreach disk.  
 - Swap on an SSD will have better performance than on a HDD.  
 - Also swap files can be used instead of swap partitions.  
-- When using systemd, you can also use systemd to automatically handle swap.
+- When using systemd, you can also use systemd to automatically handle swap (guide will follow).
 
 ### EFI System Partition (ESP)
 
@@ -362,7 +367,7 @@ For example:
 Linux supports dozens of filesystems, many of them are only wise to use for a
 specific purpose.
 
-*ext4 is the recommended all-purpose all-platform filesystem.*
+***ext4 is the recommended all-purpose all-platform filesystem.***
 
 Get a more detailed description [here](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Filesystems).
 
@@ -383,7 +388,9 @@ VFAT (FAT32) | Not fully supported by Linux (No permission settings). Mostly use
 
 		swapon /dev/<swap-partition>
 
-Deactivate a swap partition using "swapoff \<partition\>"
+Deactivate a swap partition using "swapoff \<partition\>"  
+
+**For a swap file or systemd check the [Arch installation guide](Arch_Installation_Guide.md) and the [swap guide](Resources/Arch_Linux/swap.md).**
 
 ## Mounting
 
@@ -464,13 +471,13 @@ Systemd. Choose the one you prefer.
 
 * Unpack the file
 
-		$ tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+		tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
-		x -> extract
-		p -> preserve permissions
-		f -> extract a file
-		--xattrs-include='*.*' -> include preservation of the extended attributes in all namespaces stored in the archive
-		--numeric-owner -> ensure the user and group IDs remain the same
+		# x -> extract
+		# p -> preserve permissions
+		# f -> extract a file
+		# --xattrs-include='*.*' -> include preservation of the extended attributes in all namespaces stored in the archive
+		# --numeric-owner -> ensure the user and group IDs remain the same
 
 ## Compile Options
 
@@ -513,13 +520,16 @@ Flag | Example Value | Description
 
 Don't use too many and too aggressive flags.
 
+**I recommend you also using [cpuid2cpuflags](Resources/Gentoo/cpuid2cpuflags.md).**  
+**Also setup a [ccache](Resources/Gentoo/ccache.md) to reduce compilation times.**
+
 Basic LDFLAGS are already set by the Gentoo developers, no need to change them.
 
 ### MAKEOPTS
 
 Defines how many parallel compilations should occur when installing a package.
 
-A good choice is the number of CPUs in the system plus one.  
+A good choice is the number of CPUs in the system (and if you want to) plus one.  
 This can use a lot of memory, you shoud have at least 2GiB of RAM for each job.
 
 For example:
@@ -601,9 +611,9 @@ This is done in three steps:
 2. Reloading some settings (/etc/profile) using source
 3. Changing the primary prompt (this is just as a reminder that we are now on the chrooted system)
 
-		$ chroot /mnt/gentoo /bin/bash
-		$ source /etc/profile
-		$ export PS1="(chroot) ${PS1}"
+		chroot /mnt/gentoo /bin/bash
+		source /etc/profile
+		export PS1="(chroot) ${PS1}"
 
 If the installation is interrupted anywhere after this point, it *should* be
 possible to resume the installation by just mounting the partitions again and
@@ -647,7 +657,7 @@ certain range of package versions.
 
 		(chroot) $ eselect profile list	# The selected profile has a "*"
 
-NOTE: If using Systemd, make sure the chosen profile contains "systemd". If using
+NOTE: If using systemd, make sure the chosen profile contains "systemd". If using
 OpenRC, make sure the chosen profile does **not** contain "systemd".
 
 * Select a profile
@@ -665,11 +675,12 @@ Depending on your chosen profile the time this will take can vary greatly.
 Rule of thumb: The shorter the profile name, the shorter the time it will take.
 
 (If systemd was chosen, it will take a long time, since the init system has to be
-replaced from OpenRC to Systemd.)
+replaced from OpenRC to Systemd. If you selected a profile with a de (eg. kde),
+it needs to download and compile all this too.)
 
 ### USE variable
 
-The USE variable allows certain programs to be compiled with or without optional
+The [USE variable](https://www.gentoo.org/support/use-flags/) allows certain programs to be compiled with or without optional
 support for centain items.
 
 The default USE settings are in the make.defaults file.  
@@ -677,7 +688,7 @@ Check the current active USE flags:
 
 	(chroot) $ emerge --info | grep ^USE
 
-A full description of available USE flags can be found in /var/db/repos/gentoo/profiles/use.desc
+A full description of available USE flags can be found in /var/db/repos/gentoo/profiles/use.desc, or in the like above.
 
 Example:
 
@@ -714,7 +725,7 @@ License | Description
 
 ## [Optional] Using Systemd as the init system
 
-// TODO: Maybe in a seperate guide
+// TODO: Maybe in a seperate guide  
 https://wiki.gentoo.org/wiki/Systemd
 
 ## Timezone
@@ -753,9 +764,9 @@ the /usr/share/i18n/SUPPORTED file.
 
 		(chroot) $ nano -w /etc/locale.gen
 		----------------------------------
-		# Some examples
-		en_US.UTF-8 UTF-8
-		de_CH.UTF-8 UTF-8
+			# Some examples
+			en_US.UTF-8 UTF-8
+			de_CH.UTF-8 UTF-8
 
 * Generate the locales
 
@@ -825,7 +836,7 @@ ignored.
 
 	The [Gentoo Kernel Configuration Guide](https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide) provides more info.
 
-	On an entry press space once (and M for module should appear), press space again (a * should appear)
+	On an entry press space once (an M for module should appear), press space again (a * should appear)
 
 	Press Esc two times to go back
 
@@ -836,7 +847,7 @@ ignored.
 * Select the exact processor type. Also enabel MCE features if available. (Needed to notify users of any hardware problems). In x86_64 these errors are not printed to dmesg, but to /dev/mcelog. In that case also install "app-admin/mcelog".
 * Select "Maintain a devtmpfs file system to mount at /dev" so that critical device files are already available early in the boot process.
 * Enable SCSI disk support
-* Under File systems select support for the filesystems you use. Don't compile the filesystem that is used for the root partiton as modules, otherwise Gentoo will not be able to mount the partition.
+* Under File systems select support for the filesystems you use. Don't compile the filesystem that is used for the root partiton as modules, otherwise Gentoo will not be able to mount the partition. (Make sure there is a "*" and not a "M")
 * Enable Network device support (Ethernet and Wireless Cards)
 * Enable SMP support (For multicore processors)
 * Enable USB support
@@ -898,7 +909,7 @@ Genkernel configures and builds the kernel automatically.
 
 		nano -w /etc/fstab
 		------------------
-		<boot partition (esp)>	/boot	vfat	defaults	0 2
+			<boot partition (esp)>	/boot	vfat	defaults	0 2
 
 	This file needs to be configured again later on.
 
@@ -1036,6 +1047,7 @@ Install a system logger.
 Index the file system to provide faster file location capabilities.
 
 	(chroot) $ emerge --ask sys-apps/mlocate
+	(chroot) $ updatedb
 
 ## [Optional] Remote access
 
@@ -1137,7 +1149,7 @@ wheel | Be able to use 'su'.
 	passwd miya
 
 If a user ever needs to perform some task as root, they can use 'su -'. Another
-way is to install sudo or doas.
+way is to install sudo or [doas](Resources/Gentoo/doas.md).
 
 ## Disk cleanup
 
