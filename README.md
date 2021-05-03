@@ -10,7 +10,7 @@ Additional (and maybe useful) resources for Gentoo Linux are located [here](Reso
 	
 This is just text.
 
-	$ This is a Command
+	This is a Command
 	
 	<This is a Placeholder>
 	
