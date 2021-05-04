@@ -5,8 +5,9 @@ no d h
 no h j
 no t k
 no n l
-no s :
-no S :
+"no s :
+"no S :
+nmap <Esc> :
 no j d
 no l n
 no L N

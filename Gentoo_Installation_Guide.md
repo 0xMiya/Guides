@@ -26,7 +26,11 @@ Prepare	 a usb:
 
 Flash usb:
 
-	sudo dd if=/<iso-file> of=/dev/<device> status=progress
+	sudo dd if=/<iso-file> of=/dev/<disk> status=progress
+
+	# Alternatively use cat instead:
+	sudo -i
+	cat <iso-file> > /dev/<disk>
 
 Warning, there's a reason why dd is also called "Disk Destroyer"!
 
@@ -1112,6 +1116,9 @@ https://wiki.gentoo.org/wiki/Efibootmgr
 
 	# With an initramfs:
 	(chroot) $ efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-<version>'
+
+	# Example:
+	efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-4.9.16-gentoo'
 
 ## Rebooting the system
 
