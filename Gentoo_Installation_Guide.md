@@ -1116,8 +1116,9 @@ https://wiki.gentoo.org/wiki/Efibootmgr
 	(chroot) $ efibootmgr --create --disk /dev/sda --part 2 --label "Gentoo" --loader "\efi\boot\bootx64.efi"
 
 	# With an initramfs:
-	(chroot) $ efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-<version>'
+	(chroot) $ efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-<version>'
 
+	# Use "ls /boot" to see the correct file name
 	# Example:
 	efibootmgr -c -d /dev/sda -p 2 -L "Gentoo" -l "\efi\boot\bootx64.efi" initrd='\initramfs-genkernel-amd64-4.9.16-gentoo'
 
