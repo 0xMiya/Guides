@@ -251,6 +251,12 @@ package.mask    | The package has been found corrupt, unstable or worse and has 
 profile         | The package is not suitable for the current profile and might brake the system if installed.
 license         | The packages license is not compatible with the ACCEPT_LICENSE value. Permit the license and try again.
 
+### Unmask a package
+
+```console
+echo "<package> <masking-keyword>" >> /etc/portage/package.keywords
+```
+
 ### Necessary USE flag changes
 
 This warning or error occures when a package not only depends on another package,

@@ -920,6 +920,7 @@ Genkernel configures and builds the kernel automatically.
 * Compile
 
 		(chroot) $ genkernel all	# also add optional arguments, for example for LVM support
+		(chroot) $ genkernel --makeopts="-j24" all	# use 24 parallel jobs
 
 	This will compile the kernel and create an initramfs.
 	
