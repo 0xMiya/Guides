@@ -1,10 +1,10 @@
 " auto-install vim-plug
-if empty(glob('~/.config/nvim/vim-plug/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/vim-plug/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+	silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	autocmd VimEnter * PlugInstall
 endif
+
 
 call plug#begin('~/.config/nvim/vim-plug/plugged')
 
@@ -30,6 +30,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 
 call plug#end() 
 
