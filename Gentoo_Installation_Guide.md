@@ -15,8 +15,6 @@ Note: If downloading from a mirror:
 
 ### Verify the downloaded file
 
-// TODO
-	
 ### Create a bootable usb stick, in this example using 'dd':
 	
 Prepare	 a usb:
