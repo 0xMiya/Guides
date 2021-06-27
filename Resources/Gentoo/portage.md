@@ -129,6 +129,7 @@ will then verify if the changes require the installation of new packages or
 recompilation of existing ones:
 
 	$ emerge --update --deep --with-bdeps=y --newuse --ask @world
+	$ emerge -uvDNa --with-bdeps=y @world # same but shorter version
 
 If you get a message saying that config files need to be updated use 'etc-update'
 and select the option '1' (replace the old file).
