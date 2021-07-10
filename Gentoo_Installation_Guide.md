@@ -228,6 +228,7 @@ randomly-accessible 4096-byte (4KiB) blocks.
 
 Device Type | Default device handle | Default partiton handle
 ----------- | --------------------- | -----------------------
+HDD         | /dev/hda              | /dev/hda1
 SATA, SAS, SCSI, USB | /dev/sda     | /dev/sda1
 NVMe        | /dev/nvme0n1          | /dev/nvme0n1p1
 MMC, eMMC, SD | /dev/mmcblk0        | /dev/mmcblk0p1
