@@ -319,3 +319,9 @@ the fix to "trickle down" the rsync mirrors. Check the Bugzilla if the problem
 was already reported, else report it yourself.
 
 Once the bug has been fixed, resync and try again.
+
+## Tricks
+
+Instead of having to unmask dozens of packages manually, unmask them all at once:
+
+	ACCEPT_KEYWORDS="~amd64" emerge -a <package>
