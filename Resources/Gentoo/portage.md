@@ -6,6 +6,16 @@ Completely written in Python and Bash.
 
 Most of the time 'emerge' is used to interact with Portage. See 'man emerge'.
 
+## TL;DR
+
+* Check USE flags for a package
+
+	emerge -pv <package> # pretend and verbose
+
+* Install a masked package and its masked dependencies
+
+	sudo ACCEPT_KEYWORDS="~amd64" emerge -a <package>
+
 ## Gentoo repository
 
 A collection of ebuilds.
