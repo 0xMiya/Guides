@@ -114,7 +114,7 @@ If you don't have an esp, you need to create it first. In this example using fdi
 
         Mount Point | Partition   | Partition Type     | Suggested Size
         ---------------------------------------------------------------------
-        /mnt/efi    | /dev/<esp>  | EFI System         | min. 260MiB
+        /mnt/boot   | /dev/<esp>  | EFI System         | min. 260MiB
         [SWAP]      | /dev/<swap> | Linux Swap         | more than 512MiB
         /mnt        | /dev/<root> | Linux root (/)     | around 50GiB
         /mnt/home   | /dev/<home> | Linux home (/home) | Remainder of the disk  
