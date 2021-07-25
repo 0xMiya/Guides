@@ -10,11 +10,11 @@ Most of the time 'emerge' is used to interact with Portage. See 'man emerge'.
 
 * Check USE flags for a package
 
-	emerge -pv <package> # pretend and verbose
+		emerge -pv <package> # pretend and verbose
 
 * Install a masked package and its masked dependencies
 
-	sudo ACCEPT_KEYWORDS="~amd64" emerge -a <package>
+		sudo ACCEPT_KEYWORDS="~amd64" emerge -a <package>
 
 ## Gentoo repository
 
