@@ -1,2 +1,3 @@
 *.*.backup
 Configs/.config/nvim/vim-plug/plugged/*
+!.keep
