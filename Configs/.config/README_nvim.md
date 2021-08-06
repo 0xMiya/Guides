@@ -184,6 +184,11 @@ Key     | Description
 ,nh     | Stop highlighting words after search
 ,h      | Move current line down
 ,t      | Move current line up
+,m      | Toggle quickfix menu
+,a      | Add file to quickfix-list
+,n      | Toggle NERDTree
+,ff     | Telescope find files
+,fb     | Telescope buffers
 
 ### Terminal Mode
 
@@ -192,3 +197,88 @@ Key  | Description
 ESC  | Leave terminal mode
 
 ### Plugin specific
+
+#### completion-nvim
+
+Key  | Description
+:--- | :----------
+<kbd>Tab</kbd> | Navigate through popup menu
+<kbd>Shift-Tab</kbd> | Navigate through popup menu oppsite direction
+Ctrl-p | Trigger completion menu
+
+#### Harpoon
+
+Key  | Description
+:--- | :----------
+\<leader>m | Toggle quickfix menu
+\<leader>a | Add file to quickfix-list
+
+#### NERDTree
+
+General
+
+Key  | Description
+:--- | :----------
+\<leader>n | Toggle NERDTree
+Ctrl-f | NERDTreeFind (show current file in NERDTree)
+
+Inside of NERDTree
+
+Key  | Description
+:--- | :----------
+Enter|  Open file (replaces previous file)
+s    | Open file in vertical split
+i    | Open file in horizontal split
+o    | Open in previous window
+go   | Open in preview (don't focus the opened file)
+v    | Open in new tab
+T    | Open in new tab without switching to it
+
+On a node (directory)
+
+Key  | Description
+:--- | :----------
+o, <kbd>Enter</kbd> | Expand directory
+O    | Expand diretory and subdirectories recursively
+v, T | Open dir in new tab, silently
+x, X | Close dir, recursively
+e    | Explore dir (look at it in a new panel)
+
+Filesystem
+
+Key  | Description
+:--- | :----------
+n    | Change root to selected directory
+d    | Move tree root up a dir
+U    | Move tree root up but leave old root open (expanded)
+r    | Refresh dir under cursor
+R    | Refresh root dir
+A    | Zoom (maximize-minimize NERDTree window)
+m    | Show menu
+I    | Toggle hidden files
+B    | Toggle bookmarks
+
+Tree navigation
+
+Key  | Description
+:--- | :----------
+P    | go to root
+p    | go to parent
+K    | go to first child
+J    | go to last child
+Ctrl-j, -k | go to next, previous sibling (file in directory)
+
+Bookmarks
+
+Key  | Description
+:--- | :----------
+:Bookmark | Bookmark directory under cursor
+D    | Remove bookmark under cursor
+B    | Toggle bookmarks
+
+#### Telescope
+
+Key  | Description
+:--- | :----------
+\<leader>ff | Telescope find files
+\<leader>fb | Telescope buffers
