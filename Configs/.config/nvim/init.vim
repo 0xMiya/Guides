@@ -16,17 +16,23 @@ source $HOME/.config/nvim/keys/mappings.vim
 "source $HOME/.config/nvim/themes/tokyonight.vim
 "source $HOME/.config/nvim/themes/palenight.vim
 "source $HOME/.config/nvim/themes/onedark.vim
-"source $HOME/.config/nvim/themes/sonokai.vim  " <-- great theme ;-)
+source $HOME/.config/nvim/themes/sonokai.vim  " <-- great theme ;-)
 "source $HOME/.config/nvim/themes/ayu.vim
-source $HOME/.config/nvim/themes/moonfly.vim " <-- great dark theme :-)
+"source $HOME/.config/nvim/themes/moonfly.vim " <-- great dark theme :-)
+"source $HOME/.config/nvim/themes/githubdark.vim
+"source $HOME/.config/nvim/themes/githubdarksoft.vim
+"source $HOME/.config/nvim/themes/github-nvim.vim
 
 " Plugin Configuration
 source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/lspconfig.vim
-"source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/nerdtree.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
+source $HOME/.config/nvim/plug-config/completion-nvim.vim
+source $HOME/.config/nvim/plug-config/telescope.vim
+source $HOME/.config/nvim/plug-config/harpoon.vim
 
 "hi Normal guibg=NONE ctermbg=NONE
 "hi! Normal ctermbg=none ctermfg=none guifg=none guibg=none
 "hi! NonText guifg=#333333 guibg=none
+"hi SignColumn guibg=none

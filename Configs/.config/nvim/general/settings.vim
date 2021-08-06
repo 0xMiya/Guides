@@ -1,4 +1,5 @@
 syntax enable                               " Enables syntax highlighting
+let mapleader = ","
 set nowrap                                  " Display long lines as just one line
 set whichwrap+=<,>,[,],h,l
 set ruler                                   " Show the cursor position at all time
@@ -22,7 +23,7 @@ set nobackup                                " Recommended by coc
 set nowritebackup
 set signcolumn=yes                          " Always show sign column
 set updatetime=300                          " Faster completion
-set timeoutlen=100                          " By default 1000 ms
+set timeoutlen=500                          " By default 1000 ms
 set clipboard=unnamedplus                   " Copy paste between vim and everything else
 set colorcolumn=80                          " Display vertical line after 80 columns
 "set nohlsearch                              " Do not continue highlightning after search
@@ -34,6 +35,7 @@ set scrolloff=8                             " Start scrolling when 8 lines from 
 set sidescrolloff=8                         " Start scrolling horizontaly when 8 characters from left/right away
 set completeopt=menuone,noinsert,noselect   " Autocomplete options
 set signcolumn=yes                          " Add extra column for linting, etc...
+set nocompatible                            " Shouldn't be necessary, Nvim is always 'nocompatible'
 
 set noshowmode
 
@@ -44,7 +46,7 @@ set undofile
 " Display whitespace characters
 "set listchars=eol:,tab:\ ,trail:~,extends:>,precedes:<,space:· "⎆·␣$
 set listchars=eol:,tab:\ ,trail:~,extends:>,precedes:< "⎆·␣$
-"set list
+set list
 
 "set syntax=whitespace
 

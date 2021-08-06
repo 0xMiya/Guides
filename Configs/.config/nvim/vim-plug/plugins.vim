@@ -8,29 +8,39 @@ endif
 
 call plug#begin('~/.config/nvim/vim-plug/plugged')
 
-"Plug 'morhetz/gruvbox'
+" -- Syntax highlighting --
+Plug 'sheerun/vim-polyglot'
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " :TSInstall <language>
+" -- Colorschemes --
 Plug 'gruvbox-community/gruvbox'
 Plug 'sjl/badwolf'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'preservim/nerdtree'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-Plug 'mbbill/undotree'
 Plug 'ghifarit53/tokyonight-vim'
-Plug 'itchyny/lightline.vim'
 Plug 'drewtempelmeyer/palenight.vim'
-"Plug 'nvim-telescope/telescope.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-"Plug 'nvim-lua/diagnostic-nvim'
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"Plug 'puremourning/vimspector'
-"Plug 'neovim/nvim-lsp'
+Plug 'wojciechkepka/vim-github-dark'
+Plug 'projekt0n/github-nvim-theme'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/sonokai'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bluz71/vim-moonfly-colors'
-Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+"Plug 'morhetz/gruvbox'
+" -- Statusline/Tabline --
+Plug 'itchyny/lightline.vim'
+" -- IDE --
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+"Plug 'puremourning/vimspector'
+" -- Other --
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'ThePrimeagen/harpoon'
+Plug 'nvim-lua/popup.nvim' " dependency for telescope, harpoon
+Plug 'nvim-lua/plenary.nvim' " dependency for telescope, harpoon
+
+" -- Language specific --
+"Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 
 call plug#end() 
 
