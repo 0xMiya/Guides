@@ -1,0 +1,194 @@
+# Neovim
+
+## Operations
+
+An operation is usually build like this:
+
+Operator | [Count] | Motion
+:------- | :-----: | -----:
+j        | 2       | w
+
+Operator
+:	The action to execute
+:	j, delete
+
+Motion
+:	The element that the Operator will operate on
+:	w, word
+
+Count (Optional)
+:	Number of elements (motions) to operate on
+:	2, operate on two motions
+
+### Motions
+
+Motion | Description
+:----- | :----------
+w      | go forward to the start of word
+e      | go forward to the end of word
+b      | go backward to the start of word
+
+## Keybindings
+
+I use Dvorak, so some keys may seem to be a little bit weird...
+
+I've rebound my <kbd>Capslock</kbd> key to be <kbd>ESC</kbd> instead, which is
+done at OS level, not in my nvim-config.
+
+`<C-x>`	means the Control-key (in this document just written as `Ctrl` and x.\
+`<S-x>` means the Shift-key and x (in this document just written as the capital
+letter `X`).
+
+### Normal Mode
+
+Key  | Function
+:--- | :-------
+F1   | Open help
+h    | Move cursor down
+t    | Move cursor up
+d    | Move cursor left
+n    | Move cursor right
+H    | Move 12 lines down
+T    | Move 12 lines up
+x    | Delete character
+i    | [Insert](#Insert-Mode) text (insert before cursor)
+a    | [Append](#Insert-Mode) text (insert after cursor)
+I    | [Insert](#Insert-Mode) text at start of line
+A    | [Append](#Insert-Mode) text at end of line
+o    | [Insert](#Insert-Mode) text below current line
+O    | [Insert](#Insert-Mode) text above current line
+:, <kbd>ESC</kbd> | Enter [Command Mode](#Command-Mode)
+jj   | Delete current line
+w    | Jump forward to the start of a word
+e    | Jump forward to the end of a word
+b    | Jump backward to the start of a word
+jw   | Delete until start of next word
+je   | Delete until end of current word
+jb   | Delete until start of current word
+(    | Jump sentence backward
+)    | Jump sentence forward
+{    | Jump paragraph backward
+}    | Jump paragraph forward
+0    | Jump to start of line
+\_, ^| Jump to start of line excluding whitespaces
+\$, - | Jump to end of line
+j$, j- | Delete until end of line
+j^, j_ | Delete until start of line excluding whitespaces
+j0   | Delete until start of line
+u    | Undo
+U    | Undo all changes of current line
+Ctrl-r | Redo
+p    | Paste _after_ cursor (Nvim should use the same clipboard as the os)
+yy   | Copy current line
+y(motion) | Copy motion
+r(x) | Replace with _x_
+R    | Enter Replace Mode (Allows to overwrite following text)
+c(motion) | Change (deletes motion and enters [Insert Mode](#Insert-Mode))
+cc   | Change whole line
+Ctrl-g | Show `position` and `filename`
+G    | Move to bottom of file
+gg   | Move to top of file
+(line number)G | Move to line number
+/(search term)-Enter | Forward search
+/(search term)\\c | Ignore case for this search
+\*   | Forwardsearch for word under cursor
+g*   | Include matches that are not a whole word
+?(search term)-Enter | Backward search
+\#   | Backwardsearch for word under cursor
+g#   | Include matches that are not a whole word
+l    | Jump to next result
+L    | Jump to previous result
+%    | Jump to matching parentheses `(`,`[`,`{`,`}`,`]`,`)`
+Ctrl-o | Go back where you came from (jump history)
+Ctrl-i | Go forward again (jump history)
+~    | Change (upper/lower) -case of current character
+V    | [Select](#Visual-Mode) current line
+v    | Enter [Visual Mode](#Visual-Mode)
+v-(motion)-:w \<file> | Save selected text to `file`
+J    | Concatenate lines
+\>>  | Indent line to the right (add indentation)
+`<<` | Indent line to the left (remove indentation)
+xpd  | Cut, Paste, Move cursor left (Replace two characters)
+zz   | Center screen
+==   | Indent current line
+m', m\` | Set mark
+'', \`\` | Jump to mark
+
+#### Pane Movement
+
+Key  | Description
+:--- | :----------
+N    | Select next pane
+Ctrl-h | Select pane below
+Ctrl-t | Select pane above
+Ctrl-d | Select pane left
+Ctrl-n | Select pane right
+Ctrl-w x | Switch position of current pane with position of last active pane
+
+### Insert Mode
+
+Key  | Function
+:--- | :-------
+Ctrl-h | Move current line down
+Ctrl-t | Move current line up
+
+### Visual Mode
+
+Key  | Function
+:--- | :-------
+j    | Delete selected text
+y    | Copy (yank) selected text
+~    | Change (upper/lower) -case
+H    | Move selected lines down
+T    | Move selected lines up
+gq   | Format lines (fixes indentation)
+=    | Indent selection
+
+#### Visual Block Mode
+
+Enter by pressing <kbd>Ctrl-v</kbd>
+
+### Command Mode
+
+Use <kbd>Tab</kbd> for autocomplete.
+
+Command | Function
+:------ | :-------
+:h, help (keyword) | Open help for "keyword"
+:!\<command> | Execute external shell _command_
+:w      | Write (Save)
+:q      | Quit
+:q!     | Quit without saving
+:wq     | Save and quit
+:\<line number> | Jump to line number
+:s/find/replace/ | find-replace for only first occurence
+:s/find/replace/g | find-replace for all occurences on current line
+:`'<,'>`s/find/replace/g | find-replace for selection (Enter [Visual Mode](#Visual-Mode), select text, press `:`)
+:`#,#`s/find/replace/g | find-replace between line `#` and line `#`
+:%s/find/replace/g | find-replace in the whole file
+:%s/find/replace/g<strong>c</strong> | Ask for confirmation on each result
+:r \<file>  | Insert text from another `file` below cursor
+:r !ls      | This also works with commands
+:set ic  | Set search to case <strong>in</strong>sensitive
+:set noic| Set search to case sensitive (no = off)
+:set invic | Toggle search case (in)sensitive (inv = invert)
+:set hls | Highlight ??? matching words
+:noh    | Stop highlighting words after search
+
+### Leader
+
+The \<leader> key is set to <kbd>,</kbd> (comma).
+
+Key     | Description
+:------ | :----------
+,nh     | Stop highlighting words after search
+,h      | Move current line down
+,t      | Move current line up
+
+### Terminal Mode
+
+Key  | Description
+:--- | :----------
+ESC  | Leave terminal mode
+
+### Plugin specific
