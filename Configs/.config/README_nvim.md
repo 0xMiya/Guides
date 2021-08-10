@@ -113,12 +113,13 @@ zz   | Center screen
 ==   | Indent current line
 m', m\` | Set mark
 '', \`\` | Jump to mark
+gx   | Open link under cursor in a webbrowser
 
 #### Pane Movement
 
 Key  | Description
 :--- | :----------
-N    | Select next pane
+~~N~~  | ~~Select next pane~~
 Ctrl-h | Select pane below
 Ctrl-t | Select pane above
 Ctrl-d | Select pane left
@@ -160,6 +161,7 @@ Command | Function
 :q      | Quit
 :q!     | Quit without saving
 :wq     | Save and quit
+:e \<path> | Open _path_
 :\<line number> | Jump to line number
 :s/find/replace/ | find-replace for only first occurence
 :s/find/replace/g | find-replace for all occurences on current line
@@ -219,8 +221,8 @@ General
 
 Key  | Description
 :--- | :----------
-\<leader>n | Toggle NERDTree
-Ctrl-f | NERDTreeFind (show current file in NERDTree)
+N | Toggle NERDTree
+F | NERDTreeFind (show current file in NERDTree)
 
 Inside of NERDTree
 
@@ -282,3 +284,32 @@ Key  | Description
 :--- | :----------
 \<leader>ff | Telescope find files
 \<leader>fb | Telescope buffers
+
+#### Fugitive
+
+Key  | Description
+:--- | :----------
+:G   | Open fugitive
+s    | add (stage)
+u    | reset (unstage)
+\-   | add/reset (stage/unstage)
+U    | reset (unstage) everything
+X    | Discard change. (uses checkout or clean)
+2X   | checkout --ours (merge conflict)
+3X   | checkout --theirs (merge conflict)
+=    | Toggle inline diff
+\>   | Insert inline diff
+`<`  | Remove inline diff
+dd   | :Gdiffsplit
+dv   | :Gvdiffsplit
+ds   | :ghdiffsplit
+<kbd>Enter</kbd> | Open file under cursor
+o    | Open file in a horizontal split
+gO   | Open file in a vertical split
+O    | Open file in new tab
+cc   | Create commit
+ca   | Amend last commit and edit the message
+ce   | Amend last commit without editing the message
+cw   | Reword the last commit
+crc  | Revert commit under cursor
+coo  | Checkout commit under cursor
