@@ -5,20 +5,20 @@ let NERDTreeMenuUp='t'
 let NERDTreeMapUpdir='d'
 let NERDTreeMapChangeRoot='n' 
 
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <S-N> :NERDTreeToggle<CR>
+nnoremap <S-F> :NERDTreeFind<CR>
+"nnoremap <leader>n :NERDTreeFocus<CR>
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+"autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 
 " -- NERDTree general --
 "
-"  Ctrl-t       Toggle NERDTree window
+"  leader (,)-n Toggle NERDTree window
 "  Ctrl-f       Show file in window
-"  leader (,)-n Focus NERDTree
+"  ~~leader (,)-n Focus NERDTree~~
 "
 " -- Inside of NERDTree --
 "

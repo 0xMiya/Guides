@@ -9,8 +9,8 @@ endif
 call plug#begin('~/.config/nvim/vim-plug/plugged')
 
 " -- Syntax highlighting --
-Plug 'sheerun/vim-polyglot'
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " :TSInstall <language>
+"Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " :TSInstall <language>
 " -- Colorschemes --
 Plug 'gruvbox-community/gruvbox'
 Plug 'sjl/badwolf'
@@ -29,6 +29,8 @@ Plug 'itchyny/lightline.vim'
 " -- IDE --
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'folke/trouble.nvim'
+Plug 'kyazdani42/nvim-web-devicons' " dependency for trouble
 "Plug 'puremourning/vimspector'
 " -- Other --
 Plug 'mbbill/undotree'

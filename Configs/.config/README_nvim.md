@@ -84,6 +84,7 @@ y(motion) | Copy motion
 r(x) | Replace with _x_
 R    | Enter Replace Mode (Allows to overwrite following text)
 c(motion) | Change (deletes motion and enters [Insert Mode](#Insert-Mode))
+ce   | Change untill end of word
 cc   | Change whole line
 Ctrl-g | Show `position` and `filename`
 G    | Move to bottom of file
@@ -92,7 +93,7 @@ gg   | Move to top of file
 /(search term)-Enter | Forward search
 /(search term)\\c | Ignore case for this search
 \*   | Forwardsearch for word under cursor
-g*   | Include matches that are not a whole word
+g\*   | Include matches that are not a whole word
 ?(search term)-Enter | Backward search
 \#   | Backwardsearch for word under cursor
 g#   | Include matches that are not a whole word
@@ -105,7 +106,7 @@ Ctrl-i | Go forward again (jump history)
 V    | [Select](#Visual-Mode) current line
 v    | Enter [Visual Mode](#Visual-Mode)
 v-(motion)-:w \<file> | Save selected text to `file`
-J    | Concatenate lines
+J    | Concatenate lines (with a single space between)
 \>>  | Indent line to the right (add indentation)
 `<<` | Indent line to the left (remove indentation)
 xpd  | Cut, Paste, Move cursor left (Replace two characters)
@@ -114,6 +115,11 @@ zz   | Center screen
 m', m\` | Set mark
 '', \`\` | Jump to mark
 gx   | Open link under cursor in a webbrowser
+f\<motion> | Jump forward to `motion`. The cursor is placed onto the motion.
+f"   | Jump forward to next double quote.
+k(motion) | Jump forward to `motion`. The cursor is placed before the motion.
+Ctrl-a | Increment current (or next) number
+Ctrl-x | Decrement current (or next) number
 
 #### Pane Movement
 
@@ -140,6 +146,8 @@ Key  | Function
 j    | Delete selected text
 y    | Copy (yank) selected text
 ~    | Change (upper/lower) -case
+U    | To upper case
+u    | To lower case
 H    | Move selected lines down
 T    | Move selected lines up
 gq   | Format lines (fixes indentation)
@@ -197,6 +205,64 @@ Key     | Description
 Key  | Description
 :--- | :----------
 ESC  | Leave terminal mode
+
+### Advanced
+
+#### Inside & Around
+
+> NOTE: Even though I wrote "current \<motion>", with quotes this will also
+> work for the next motion, if you are outside of the specified motion.
+
+Key  | Description
+:--- | :----------
+i    | inside
+a    | around
+ji\<motion> | Delete inside of `motion`.
+ji{  | Delete everything inbetween current braces.
+ja\<motion> | Delete around `motion`.
+ja{  | Delete everything inside and including current braces.
+ci{  | Change (puts you in insert mode) everything inside current braces.
+ci"  | Change (puts you in insert mode) everything inside current double quotes.
+vi{  | Highlight everything inside current braces.
+=i{  | Fix indentation between current braces.
+ji(  | Delete everything inbetween current parentheses.
+ji'  | Delete everything inbetween current single quotes.
+yi(  | Copy (yank) everything inbetween current parentheses.
+f\<motion> | Jump forward to `motion`
+f"   | Jump forward to next double quote.
+gi   | Go to last insert location and switch to [Insert Mode](#Insert-Mode)
+viw  | Highlight current word (visual - inside - word)
+
+#### The G-Spot ;-)
+
+Key  | Description
+:--- | :----------
+Ctrl-G | Show information about current cursor position.
+g8   | Get UTF-8 code of symbol under cursor.
+g<   | Reopen output of last command.
+g&   | Replay last "s"-command (find command)
+gJ   | Concatenate lines whithout inserting a space.
+gU(motion) | Set `motion` to uppercase.
+gUiw | Set current word to uppercase (g - uppercase - inside - word).
+gUk<kbd>space</kbd> | Set everything until next space to uppercase.
+gd   | Jump to local definition.
+gD   | Jump to global definition.
+<kbd>space</kbd>gd | (coc only) Jump to actual definition.
+gf   | Jump to file (-name under cursor). (README.md)
+gF   | Jump to file on line under cursor. (README.md:10)
+gq   | [(Visual Mode)](#Visual-Mode) Format selected text.
+(number)g_ | Jump down number-1 lines and put cursor to the end of the line.
+g$, g_ | When `set wrap`, jump to the end of the current part of the wrapped line.
+g??  | Rot-13 on the whole line.
+g?   | Rot-13 on selected text.
+gg   | To the top!
+G    | To the bottom!
+(number)G | Jump to line number.
+gv   | Rehighlight last visual area.
+gi   | Go to last insert location and switch to [Insert Mode](#Insert-Mode)
+:'\<,'\>g/find/(action) | Execute action over find results.
+:g/find/d | Search for `find` and `d` (delete) it. (Note that your keybindings won't work here.)
+:g/find/norm! (action) | Execute any command (action) you want.
 
 ### Plugin specific
 
@@ -313,3 +379,4 @@ ce   | Amend last commit without editing the message
 cw   | Reword the last commit
 crc  | Revert commit under cursor
 coo  | Checkout commit under cursor
+:Gllog | Open git log

@@ -10,13 +10,14 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
 
 " Themes
-"source $HOME/.config/nvim/themes/badwolf.vim
+source $HOME/.config/nvim/themes/badwolf.vim
+"source $HOME/.config/nvim/themes/goodwolf.vim
 "source $HOME/.config/nvim/themes/gruvbox.vim
 "source $HOME/.config/nvim/themes/papercolor.vim
 "source $HOME/.config/nvim/themes/tokyonight.vim
 "source $HOME/.config/nvim/themes/palenight.vim
 "source $HOME/.config/nvim/themes/onedark.vim
-source $HOME/.config/nvim/themes/sonokai.vim  " <-- great theme ;-)
+""source $HOME/.config/nvim/themes/sonokai.vim  " <-- great theme ;-)
 "source $HOME/.config/nvim/themes/ayu.vim
 "source $HOME/.config/nvim/themes/moonfly.vim " <-- great dark theme :-)
 "source $HOME/.config/nvim/themes/githubdark.vim

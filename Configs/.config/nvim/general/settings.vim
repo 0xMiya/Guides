@@ -23,7 +23,7 @@ set nobackup                                " Recommended by coc
 set nowritebackup
 set signcolumn=yes                          " Always show sign column
 set updatetime=300                          " Faster completion
-set timeoutlen=500                          " By default 1000 ms
+set timeoutlen=300                          " By default 1000 ms
 set clipboard=unnamedplus                   " Copy paste between vim and everything else
 set colorcolumn=80                          " Display vertical line after 80 columns
 "set nohlsearch                              " Do not continue highlightning after search
