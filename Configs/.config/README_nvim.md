@@ -264,6 +264,13 @@ gi   | Go to last insert location and switch to [Insert Mode](#Insert-Mode)
 :g/find/d | Search for `find` and `d` (delete) it. (Note that your keybindings won't work here.)
 :g/find/norm! (action) | Execute any command (action) you want.
 
+### Macros
+
+1. Start recording by pressing <kbd>q</kbd> and a char, e.g. <kbd>a</kbd>.
+2. Do whatever you want to do.
+3. Stop recording by pressing <kbd>q</kbd>.
+4. Replay the macro by pressing <kbd>@</kbd> and the same char (e.g. <kbd>a</kbd>).
+
 ### Plugin specific
 
 #### completion-nvim
