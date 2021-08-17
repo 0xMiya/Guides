@@ -42,6 +42,12 @@ Warning, there's a reason why dd is also called "Disk Destroyer"!
 	qemu-img create image.img 16G
 	qemu-system-x86_64 -bios /usr/share/ovmf/x64/OVMF.fd -hda image.img -cdrom <iso> -m 4G -boot order=dc -enable-kvm
 
+#### Qemu tricks
+
+Type <kbd>Ctrl-Alt-2</kbd> to switch to qemu console.
+Use `sendkey ctrl-alt-f#` where `#` is the number of the function-key.
+Change back by pressing <kbd>Ctrl-Alt-1</kbd>.
+
 ### On real hardware
 
 * Insert the usb stick and reboot. In the motherboards firmware, select the usb to

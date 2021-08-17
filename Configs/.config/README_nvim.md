@@ -132,6 +132,20 @@ Ctrl-d | Select pane left
 Ctrl-n | Select pane right
 Ctrl-w x | Switch position of current pane with position of last active pane
 
+#### Tab Movement
+
+Key  | Description
+:--- | :----------
+gt   | Go to next tab
+gT   | Go to previous tab
+(n)gt | Go to nth tab
+g<kbd>Tab</kbd> | Go to last accessed tab
+:tabnew {file} / :tabe[dit] {file} | Open new tab
+:tabc[lose] | Close tab
+:tabo[nly] | Close all tabs except current
+:tabs | List all tabs and their windows
+:tabm[ove] (n) | Move tab to nth position
+
 ### Insert Mode
 
 Key  | Function
