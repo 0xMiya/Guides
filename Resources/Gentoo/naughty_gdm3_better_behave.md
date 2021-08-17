@@ -37,10 +37,10 @@ The `XkbLayout` and `XkbVariant` MUST match exactly what is configured in the
 
 5. In the top bar
 
-	i. Select "Dvorak"
-	ii. Log out
-	iii. If there is one, select "Dvorak" in the top bar of gdm
-	iiii. Shutdown
+	1. Select "Dvorak"
+	2. Log out
+	3. If there is one, select "Dvorak" in the top bar of gdm
+	4. Shutdown
 
 6. That's it
 
