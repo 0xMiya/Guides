@@ -152,6 +152,9 @@ Key  | Function
 :--- | :-------
 Ctrl-h | Move current line down
 Ctrl-t | Move current line up
+Ctrl-x s | (When `set spell`) Display auto correction
+Ctrl-n | Select next element in completion-menu
+Ctrl-p | Select previous element in completion-menu
 
 ### Visual Mode
 
